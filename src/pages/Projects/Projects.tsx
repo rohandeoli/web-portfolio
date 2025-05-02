@@ -41,7 +41,7 @@ function Projects(props: { theme: any; setTheme: (theme: any) => void }) {
         {
             id: "1",
             name: "Online Portfolio Website",
-            url: "https://github.com/rohandeoli/blockchain_gpu",
+            url: "https://github.com/rohandeoli/web-portfolio",
             description:
                 "This is my personal portfolio website, built using React and Material UI. It showcases my projects, skills, and experiences.",
             languages: [
@@ -69,8 +69,13 @@ function Projects(props: { theme: any; setTheme: (theme: any) => void }) {
             links: [
                 {
                     name: "Github",
-                    url: "https://github.com/rohandeoli/blockchain_gpu",
+                    url: "https://github.com/rohandeoli/web-portfolio",
                     iconifyClass: "ri:github-fill",
+                },
+                {
+                    name: "Live Demo",
+                    url: "https://rohandeoli.netlify.app/",
+                    iconifyClass: "ri:external-link-fill",
                 }
             ],
         },
