@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router";
-import "./Splash.css";
+import "./splash.css";
 
 function AnimatedSplash() {
     return (
