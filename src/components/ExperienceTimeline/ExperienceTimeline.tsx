@@ -13,7 +13,7 @@ import TimelineCard from '../TimelineCard/TimelineCard';
 function ExperienceTimeline(props: { theme: any, experience: any }) {
     const muiTheme = useTheme();
     const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down('sm')); // For screens <= 600px
-    const isMediumScreen = useMediaQuery(muiTheme.breakpoints.between('sm', 'md')); // For screens between 600px and 960px
+    // const isMediumScreen = useMediaQuery(muiTheme.breakpoints.between('sm', 'md')); // For screens between 600px and 960px
     const { theme, experience } = props;
     return (
         <Timeline position={isSmallScreen ? "right" : "alternate"}>

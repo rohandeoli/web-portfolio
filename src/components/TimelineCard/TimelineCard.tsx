@@ -4,7 +4,7 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import AddIcon from '@mui/icons-material/Add';
 
 export default function TimelineCard(props: { theme: any, experience: any }) {
-    const { theme, experience } = props;
+    const { experience } = props;
     return (
         <Box sx={{}}>
             <Card variant="outlined">

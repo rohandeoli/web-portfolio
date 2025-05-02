@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router";
 import "./Splash.css";
 
-function AnimatedSplash(props: { theme: any; setTheme: (theme: any) => void; }) {
+function AnimatedSplash() {
     return (
         <div className="logo_wrapper">
             <div className="loading">
@@ -18,7 +18,7 @@ function AnimatedSplash(props: { theme: any; setTheme: (theme: any) => void; }) 
     );
 }
 
-function Splash(props: { theme: any; setTheme: (theme: any) => void; }) {
+function Splash() {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function Splash(props: { theme: any; setTheme: (theme: any) => void; }) {
     return redirect ? (
         <Navigate to="/home" replace={true} />
     ) : (
-        <AnimatedSplash theme={props.theme} setTheme={props.setTheme} />
+        <AnimatedSplash />
     );
 }
 
