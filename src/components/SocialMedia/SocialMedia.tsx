@@ -39,15 +39,6 @@ export default function SocialMedia() {
                 <i className="fab fa-google"></i>
                 <span></span>
             </a>
-            <a
-                href={socialMediaLinks.twitter}
-                className="icon-button twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <i className="fab fa-twitter"></i>
-                <span></span>
-            </a>
         </div>
     );
 }
