@@ -14,7 +14,7 @@ function Contact(props: { theme: any, setTheme: (theme: any) => void }) {
         profile_image_path: "hari-crop.png",
         description:
             "I am always open to discussing new projects, creative ideas or opportunities to be part of your visions. I am also open to any kind of feedback and suggestions.",
-        resumeLink: "https://drive.google.com/file/d/1_5WDXpVrDojGlX9q6_TmlVjMfGs5zYiP/view?usp=sharing"
+        resumeLink: "https://drive.google.com/file/d/1Co3W20DC5fPfTC2NzmjdMQAe3tZtjGFF/view?usp=sharing"
     }
 
     const blogSection = {
