@@ -1,5 +1,5 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { createElement, useMemo, useState } from 'react';
+import { createElement, useEffect, useMemo, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import './App.css';
 import Education from './pages/Education/Education';
@@ -9,8 +9,17 @@ import Splash from './pages/Splash/Splash';
 import { themes } from './theme';
 import Projects from './pages/Projects/Projects';
 import Contact from './pages/Contact/Contact';
+import Clarity from '@microsoft/clarity';
 
 function App() {
+
+  useEffect(() => {
+    // Check if the environment variable is available, otherwise use a placeholder
+    const clarityId = import.meta.env.VITE_CLARITY_ID || '';
+    if (clarityId && clarityId !== '') {
+      Clarity.init(clarityId);
+    }
+  }, []);
 
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
