@@ -23,7 +23,7 @@ function Splash() {
 
     useEffect(() => {
         // Using useEffect for the timeout to prevent memory leaks
-        const timer = setTimeout(() => setRedirect(true), 2000);
+        const timer = setTimeout(() => setRedirect(true), 1000);
 
         // Clean up the timer when component unmounts
         return () => clearTimeout(timer);

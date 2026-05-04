@@ -1,4 +1,5 @@
 import { Tooltip } from "@mui/material";
+import { Icon } from "@iconify-icon/react";
 import "../Skills/Skills.css";
 import "./SoftwareSkill.css";
 
@@ -15,13 +16,15 @@ function SoftwareSkill(props: { logos: { skillName: string; fontAwesomeClassname
                                 placement="top"
                                 arrow
                             >
-                                <li className="software-skill-inline" data-name={logo.skillName}>
-                                    <span
-                                        className="iconify"
-                                        data-icon={logo.fontAwesomeClassname}
+                                <li
+                                    className="software-skill-inline"
+                                    data-name={logo.skillName}
+                                    aria-label={logo.skillName}
+                                >
+                                    <Icon
+                                        icon={logo.fontAwesomeClassname}
                                         style={logo.style}
-                                        data-inline="false"
-                                    ></span>
+                                    />
                                 </li>
                             </Tooltip>
                         );

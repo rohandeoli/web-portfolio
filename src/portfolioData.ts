@@ -36,7 +36,7 @@ export const portfolioData: PortfolioData = {
           },
           {
             skillName: "CSS3",
-            fontAwesomeClassname: "fa-css3",
+            fontAwesomeClassname: "simple-icons:css3",
             style: { color: "#1572B6" },
           },
           {

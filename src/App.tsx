@@ -63,18 +63,20 @@ function App() {
       <CssBaseline /> {/* This normalizes the CSS */}
       <BrowserRouter>
         <Suspense fallback={<Loading />}>
-          <Routes>
-            {routeConfig.map((route) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={createElement(route.component, {
-                  theme: theme,
-                  setTheme: toggleTheme,
-                })}
-              />
-            ))}
-          </Routes>
+          <main>
+            <Routes>
+              {routeConfig.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={createElement(route.component, {
+                    theme: theme,
+                    setTheme: toggleTheme,
+                  })}
+                />
+              ))}
+            </Routes>
+          </main>
         </Suspense>
       </BrowserRouter>
     </ThemeProvider>
