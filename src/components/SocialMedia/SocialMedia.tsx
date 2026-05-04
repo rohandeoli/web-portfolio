@@ -1,14 +1,9 @@
 import "./SocialMedia.css";
+import { portfolioData } from "../../portfolioData";
+import { Icon } from "@iconify-icon/react";
 
 export default function SocialMedia() {
-
-    const socialMediaLinks = {
-        /* Your Social Media Link */
-        github: "https://github.com/rohandeoli",
-        linkedin: "https://www.linkedin.com/in/rohan-deoli/",
-        gmail: "rohan.deoli98@gmail.com",
-        twitter: "https://twitter.com/rohan1010",
-    };
+    const { socialMediaLinks } = portfolioData;
 
     return (
         <div className="social-media-div">
@@ -17,8 +12,9 @@ export default function SocialMedia() {
                 className="icon-button github"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
             >
-                <i className="fab fa-github"></i>
+                <Icon icon="akar-icons:github-fill" />
                 <span></span>
             </a>
             <a
@@ -26,8 +22,9 @@ export default function SocialMedia() {
                 className="icon-button linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
             >
-                <i className="fab fa-linkedin-in"></i>
+                <Icon icon="entypo-social:linkedin-with-circle" />
                 <span></span>
             </a>
             <a
@@ -35,8 +32,9 @@ export default function SocialMedia() {
                 className="icon-button google"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Gmail"
             >
-                <i className="fab fa-google"></i>
+                <Icon icon="ion:logo-google" />
                 <span></span>
             </a>
         </div>

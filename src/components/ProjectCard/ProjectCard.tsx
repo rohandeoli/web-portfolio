@@ -1,4 +1,5 @@
 import { Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material";
+import { Icon } from "@iconify-icon/react";
 
 function ProjectCard(props: { theme: any, project: any }) {
     const { theme, project } = props;
@@ -10,17 +11,15 @@ function ProjectCard(props: { theme: any, project: any }) {
             />
             <CardContent>
                 {project.languages.map((language: any) => (
-                    <span
+                    <Icon
                         key={language.name}
-                        className="iconify"
-                        data-icon={language.iconifyClass}
-                        data-inline="false"
+                        icon={language.iconifyClass}
                         style={{
                             fontSize: "2em",
                             color: theme.palette.custom.dark,
                             marginRight: "10px",
                         }}
-                    ></span>
+                    />
                 ))}
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     {project.description}
@@ -28,20 +27,23 @@ function ProjectCard(props: { theme: any, project: any }) {
             </CardContent>
             <CardActions>
                 {project.links.map((link: any) => (
-                    <a href={link.url} key={link.name} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
-                        <span
-                            key={link.name}
-                            className="iconify"
-                            data-icon={link.iconifyClass}
-                            data-inline="false"
+                    <a
+                        href={link.url}
+                        key={link.name}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                        aria-label={`View ${link.name} for ${project.name}`}
+                    >
+                        <Icon
+                            icon={link.iconifyClass}
                             style={{
                                 fontSize: "2em",
                                 marginRight: "10px",
                                 cursor: "pointer",
                             }}
-                            onClick={() => window.open(link.url, "_blank", "noopener,noreferrer")}
                             title={link.name}
-                        ></span>
+                        />
                     </a>
                 ))}
             </CardActions>

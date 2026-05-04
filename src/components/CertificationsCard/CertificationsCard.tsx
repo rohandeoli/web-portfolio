@@ -57,7 +57,7 @@ function CertificationsCard(props: { theme: any; certification: any; }) {
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton
-                    aria-label="open link"
+                    aria-label={`Open ${certification.title} certification`}
                     onClick={() => window.open(certification.certificate_link, '_blank', 'noopener,noreferrer')}
                 >
                     <OpenInNewIcon />

@@ -5,25 +5,11 @@ import SocialMedia from "../../components/SocialMedia/SocialMedia";
 import BlogsImg from "./BlogsImg";
 import "./Contact.css";
 import ContactImage from "./ContactImage";
+import { portfolioData } from "../../portfolioData";
 
 function Contact(props: { theme: any, setTheme: (theme: any) => void }) {
     const { theme, setTheme } = props;
-
-    const ContactData = {
-        title: "Contact Me",
-        profile_image_path: "hari-crop.png",
-        description:
-            "I am always open to discussing new projects, creative ideas or opportunities to be part of your visions. I am also open to any kind of feedback and suggestions.",
-        resumeLink: "https://drive.google.com/file/d/1Co3W20DC5fPfTC2NzmjdMQAe3tZtjGFF/view?usp=sharing"
-    }
-
-    const blogSection = {
-        title: "Blogs",
-        subtitle:
-            "I write about my learnings and experiences in the field of technology. I also write about my experiences in open source and other projects.",
-        link: "https://medium.com/@rohan.deoli98",
-        avatar_image_path: "blogs_image.svg",
-    }
+    const { contactData, blogSection } = portfolioData;
 
     return (
         <div className="contact-main">
@@ -38,13 +24,13 @@ function Contact(props: { theme: any, setTheme: (theme: any) => void }) {
                             className="contact-heading-text"
                             style={{ color: theme.text }}
                         >
-                            {ContactData["title"]}
+                            {contactData["title"]}
                         </h1>
                         <p
                             className="contact-header-detail-text subTitle"
                             style={{ color: theme.secondaryText }}
                         >
-                            {ContactData["description"]}
+                            {contactData["description"]}
                         </p>
                         <SocialMedia />
                         <br />
@@ -52,7 +38,7 @@ function Contact(props: { theme: any, setTheme: (theme: any) => void }) {
                         <Button
                             className="button"
                             onClick={() => {
-                                window.open(ContactData.resumeLink, "_blank");
+                                window.open(contactData.resumeLink, "_blank");
                             }}
                             sx={{
                                 backgroundColor: theme.palette.primary.main,
