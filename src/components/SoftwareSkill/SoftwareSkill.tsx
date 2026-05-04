@@ -1,4 +1,4 @@
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Tooltip } from "@mui/material";
 import "../Skills/Skills.css";
 import "./SoftwareSkill.css";
 
@@ -9,14 +9,11 @@ function SoftwareSkill(props: { logos: { skillName: string; fontAwesomeClassname
                 <ul className="dev-icons">
                     {props.logos.map((logo) => {
                         return (
-                            <OverlayTrigger
+                            <Tooltip
                                 key={logo.skillName}
-                                placement={"top"}
-                                overlay={
-                                    <Tooltip id={`tooltip-top`}>
-                                        <strong>{logo.skillName}</strong>
-                                    </Tooltip>
-                                }
+                                title={logo.skillName}
+                                placement="top"
+                                arrow
                             >
                                 <li className="software-skill-inline" data-name={logo.skillName}>
                                     <span
@@ -26,7 +23,7 @@ function SoftwareSkill(props: { logos: { skillName: string; fontAwesomeClassname
                                         data-inline="false"
                                     ></span>
                                 </li>
-                            </OverlayTrigger>
+                            </Tooltip>
                         );
                     })}
                 </ul>

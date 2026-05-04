@@ -2,31 +2,35 @@ import { Button } from "@mui/material";
 import GreetingImage from "../GreetingImage/GreetingImage";
 import SocialMedia from "../SocialMedia/SocialMedia";
 import './Greeting.css';
+import { portfolioData } from "../../portfolioData";
+import { useNavigate } from "react-router";
 
 function Greeting(props: { theme: any; }) {
     const { theme } = props;
+    const { greeting } = portfolioData;
+    const navigate = useNavigate();
 
     return (
         <div className="greet-main" id="greeting">
             <div className="greeting-main">
                 <div className="greeting-text-div">
-                    <h1 className="greeting-text">Hello 👋.</h1>
+                    <h1 className="greeting-text">{greeting.title}</h1>
                     <p
                         className="greeting-text-p subTitle"
                         style={{ color: theme.palette.secondary.main }}
                     >
                         <span>I'm </span>
                         <span style={{ color: theme.palette.primary.main }}>
-                            Rohan Deoli.{" "}
+                            {greeting.full_name}.{" "}
                         </span>
-                        Programmer, Full Stack Developer, Open Source Enthusiast.
+                        {greeting.subTitle}
                     </p>
                     <SocialMedia />
                     <div className="portfolio-repo-btn-div">
                         <Button
                             className="button"
                             onClick={() => {
-                                window.location.href = "/contact";
+                                navigate("/contact");
                             }}
                             sx={{
                                 backgroundColor: theme.palette.primary.main,

@@ -1,14 +1,8 @@
 import "./SocialMedia.css";
+import { portfolioData } from "../../portfolioData";
 
 export default function SocialMedia() {
-
-    const socialMediaLinks = {
-        /* Your Social Media Link */
-        github: "https://github.com/rohandeoli",
-        linkedin: "https://www.linkedin.com/in/rohan-deoli/",
-        gmail: "rohan.deoli98@gmail.com",
-        twitter: "https://twitter.com/rohan1010",
-    };
+    const { socialMediaLinks } = portfolioData;
 
     return (
         <div className="social-media-div">

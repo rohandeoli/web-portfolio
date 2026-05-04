@@ -1,15 +1,20 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { createElement, useEffect, useMemo, useState } from 'react';
+import { createElement, useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import './App.css';
-import Education from './pages/Education/Education';
-import Experience from './pages/Experience/Experience';
-import Home from './pages/Home/Home';
-import Splash from './pages/Splash/Splash';
 import { themes } from './theme';
-import Projects from './pages/Projects/Projects';
-import Contact from './pages/Contact/Contact';
 import Clarity from '@microsoft/clarity';
+
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home/Home'));
+const Education = lazy(() => import('./pages/Education/Education'));
+const Experience = lazy(() => import('./pages/Experience/Experience'));
+const Projects = lazy(() => import('./pages/Projects/Projects'));
+const Contact = lazy(() => import('./pages/Contact/Contact'));
+const Splash = lazy(() => import('./pages/Splash/Splash'));
+
+// Simple loading fallback
+const Loading = () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#E3405F' }}>Loading...</div>;
 
 function App() {
 
@@ -57,18 +62,20 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* This normalizes the CSS */}
       <BrowserRouter>
-        <Routes>
-          {routeConfig.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={createElement(route.component, {
-                theme: theme,
-                setTheme: toggleTheme,
-              })}
-            />
-          ))}
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            {routeConfig.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={createElement(route.component, {
+                  theme: theme,
+                  setTheme: toggleTheme,
+                })}
+              />
+            ))}
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </ThemeProvider>
   )

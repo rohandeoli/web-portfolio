@@ -2,9 +2,11 @@ import ContrastIcon from '@mui/icons-material/Contrast';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import { MouseEvent, useState } from "react";
+import { useNavigate } from "react-router";
+import { portfolioData } from "../../portfolioData";
 
 function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
-
+    const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
@@ -15,13 +17,14 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
         setAnchorElNav(null);
         const pageIndex = ['Home', 'Education & Certifications', 'Experience', 'Projects', 'Contact & Resume'].indexOf(page);
         if (pageIndex !== -1) {
-            window.location.href = `/${pageRoutes[pageIndex]}`;
+            navigate(`/${pageRoutes[pageIndex]}`);
         } else {
             console.error(`Page "${page}" not found`);
         }
     };
 
     const { theme, setTheme } = props;
+    const { greeting } = portfolioData;
     const pages = ['Home', 'Education & Certifications', 'Experience', 'Projects', 'Contact & Resume'];
     const pageRoutes = ['home', 'education', 'experience', 'projects', 'contact'];
 
@@ -32,7 +35,7 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
+                        component="div"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -46,10 +49,10 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
                             cursor: 'pointer',
                         }}
                         onClick={() => {
-                            window.location.href = "/";
+                            navigate("/");
                         }}
                     >
-                        Rohan Deoli
+                        {greeting.full_name}
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -76,7 +79,7 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
                                 horizontal: 'left',
                             }}
                             open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
+                            onClose={() => setAnchorElNav(null)}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {pages.map((page) => (
@@ -89,7 +92,7 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
+                        component="div"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -99,18 +102,19 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            cursor: 'pointer',
+                        }}
+                        onClick={() => {
+                            navigate("/");
                         }}
                     >
-                        Rohan Deoli
+                        {greeting.full_name}
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={() => {
-                                    handleCloseNavMenu(page);
-                                    console.log(`Navigating to ${page}`);
-                                }}
+                                onClick={() => handleCloseNavMenu(page)}
                                 sx={{ mx: 1, my: 2, color: theme.palette.text.primary, display: 'block', ':hover': { backgroundColor: theme.palette.custom.headerHover } }}
                             >
                                 {page}
@@ -118,13 +122,13 @@ function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
                         ))}
                     </Box>
 
-                    <IconButton>
-                        <ContrastIcon
-                            onClick={() => {
-                                setTheme(theme.palette.mode)
-                            }}
-                            sx={{ color: theme.palette.primary.main }}
-                        />
+                    <IconButton
+                        aria-label="toggle theme"
+                        onClick={() => {
+                            setTheme(theme.palette.mode)
+                        }}
+                    >
+                        <ContrastIcon sx={{ color: theme.palette.primary.main }} />
                     </IconButton>
                 </Toolbar>
             </Container>
