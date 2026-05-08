@@ -1,19 +1,20 @@
-import Footer from "../../components/Footer/Footer";
-import Greeting from "../../components/Greeting/Greeting";
-import Header from "../../components/Header/Header";
-import Skills from "../../components/Skills/Skills";
+import BentoSkills from "../../components/BentoSkills/BentoSkills";
+import Hero from "../../components/Hero/Hero";
+import { Box } from "@mui/material";
+import { Helmet } from "react-helmet-async";
+import { portfolioData } from "../../portfolioData";
 
-function Home( props: { theme: any; setTheme: (theme: any) => void; } ) {
-  const { theme, setTheme } = props;
-
+function Home() {
   return (
-    <div>
-      <Header theme={theme} setTheme={setTheme} />
-      <Greeting theme={theme} />
-      <Skills theme={theme} />
-      <Footer theme={theme} />
-    </div>
+    <Box>
+      <Helmet>
+        <title>{portfolioData.greeting.full_name} | Home</title>
+        <meta name="description" content={portfolioData.greeting.subTitle} />
+      </Helmet>
+      <Hero />
+      <BentoSkills />
+    </Box>
   );
-};
+}
 
 export default Home;

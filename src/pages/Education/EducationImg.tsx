@@ -1,4 +1,6 @@
-export default function EducationImg(props: { theme: any }) {
+import { Theme } from '@mui/material/styles';
+
+export default function EducationImg(props: { theme: Theme }) {
     const { theme } = props;
     return (
         <svg

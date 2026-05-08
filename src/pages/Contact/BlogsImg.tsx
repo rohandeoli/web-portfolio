@@ -1,4 +1,6 @@
-export default function BlogsImg(props: { theme: any }) {
+import { Theme } from '@mui/material/styles';
+
+export default function BlogsImg(props: { theme: Theme }) {
   const { theme } = props;
   return (
     <svg
