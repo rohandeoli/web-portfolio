@@ -40,7 +40,7 @@ function Footer() {
               sx={{
                 fontWeight: 800,
                 color: theme.palette.primary.main,
-                fontFamily: "monospace",
+                fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
                 mb: 1,
               }}
             >

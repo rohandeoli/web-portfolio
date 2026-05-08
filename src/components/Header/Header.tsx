@@ -1,6 +1,6 @@
 import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
 import { AppBar, Box, Container, IconButton, Toolbar, Typography, useTheme, Button, useScrollTrigger } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { portfolioData } from "../../portfolioData";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,6 +31,15 @@ function Header(props: { setTheme: () => void; }) {
     setIsMobileMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isMobileMenuOpen]);
+
   return (
     <AppBar 
       position="fixed" 
@@ -56,7 +65,7 @@ function Header(props: { setTheme: () => void; }) {
               color: theme.palette.primary.main,
               display: 'flex',
               alignItems: 'center',
-              fontFamily: 'monospace',
+              fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
             }}
           >
             {greeting.logo_name}
@@ -109,38 +118,56 @@ function Header(props: { setTheme: () => void; }) {
       {/* Mobile Nav Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            style={{
-              position: 'fixed',
-              top: 80,
-              left: 0,
-              right: 0,
-              backgroundColor: theme.palette.background.default,
-              borderBottom: `1px solid ${theme.palette.custom.border}`,
-              padding: '20px',
-              zIndex: 1000,
-            }}
-          >
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {navItems.map((item) => (
-                <Button
-                  key={item.name}
-                  fullWidth
-                  onClick={() => handleNavClick(item.path)}
-                  sx={{
-                    justifyContent: 'flex-start',
-                    color: location.pathname === item.path ? theme.palette.primary.main : theme.palette.text.primary,
-                    py: 1.5,
-                  }}
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </Box>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-hidden="true"
+              style={{
+                position: 'fixed',
+                top: 80,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                zIndex: 999,
+              }}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              style={{
+                position: 'fixed',
+                top: 80,
+                left: 0,
+                right: 0,
+                backgroundColor: theme.palette.background.default,
+                borderBottom: `1px solid ${theme.palette.custom.border}`,
+                padding: '20px',
+                zIndex: 1000,
+              }}
+            >
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                {navItems.map((item) => (
+                  <Button
+                    key={item.name}
+                    fullWidth
+                    onClick={() => handleNavClick(item.path)}
+                    sx={{
+                      justifyContent: 'flex-start',
+                      color: location.pathname === item.path ? theme.palette.primary.main : theme.palette.text.primary,
+                      py: 1.5,
+                    }}
+                  >
+                    {item.name}
+                  </Button>
+                ))}
+              </Box>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </AppBar>

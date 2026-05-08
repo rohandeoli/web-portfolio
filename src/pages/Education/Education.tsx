@@ -2,7 +2,7 @@ import { Box, Container, Paper, Typography, useTheme, Link } from "@mui/material
 import { motion } from "framer-motion";
 import { portfolioData } from "../../portfolioData";
 import { Award, Calendar, ExternalLink } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "../../components/PageMeta/PageMeta";
 
 const Education = () => {
   const theme = useTheme();
@@ -10,17 +10,11 @@ const Education = () => {
 
   return (
     <Box sx={{ py: 10 }}>
-      <Helmet>
-        <title>{greeting.full_name} | Education</title>
-        <meta name="description" content={`Education and Certifications of ${greeting.full_name}`} />
-        <meta property="og:title" content={`${greeting.full_name} | Education`} />
-        <meta property="og:description" content={`Education and Certifications of ${greeting.full_name}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${greeting.siteUrl}/education`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${greeting.full_name} | Education`} />
-        <meta name="twitter:description" content={`Education and Certifications of ${greeting.full_name}`} />
-      </Helmet>
+      <PageMeta
+        pageTitle="Education"
+        description={`Education and Certifications of ${greeting.full_name}`}
+        path="/education"
+      />
       <Container maxWidth="lg">
         {/* Degrees Section */}
         <Box sx={{ mb: 12 }}>

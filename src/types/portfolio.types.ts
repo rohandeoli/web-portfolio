@@ -9,7 +9,6 @@ export interface Greeting {
   title: string;
   title2: string;
   logo_name: string;
-  nickname: string;
   full_name: string;
   subTitle: string;
   resumeLink: string;
@@ -32,27 +31,21 @@ export interface Skill {
 export interface Degree {
   title: string;
   subtitle: string;
-  alt_name: string;
   duration: string;
   descriptions: string[];
   website_link: string;
-  logo_path?: string;
 }
 
 export interface Certification {
   title: string;
   subtitle: string;
-  logo_path: string;
   certificate_link: string;
-  alt_name: string;
-  color_code: string;
 }
 
 export interface WorkExperience {
   title: string;
   company: string;
   company_url: string;
-  logo_path: string;
   duration: string;
   location: string;
   description: string[];
@@ -67,9 +60,7 @@ export interface ExperienceSection {
 
 export interface Experience {
   title: string;
-  subtitle: string;
   description: string;
-  header_image_path: string;
   sections: ExperienceSection[];
 }
 
@@ -96,21 +87,11 @@ export interface Project {
 export interface ProjectsHeader {
   title: string;
   description: string;
-  avatar_image_path: string;
 }
 
 export interface ContactData {
   title: string;
-  profile_image_path: string;
   description: string;
-  resumeLink: string;
-}
-
-export interface BlogSection {
-  title: string;
-  subtitle: string;
-  link: string;
-  avatar_image_path: string;
 }
 
 export interface PortfolioData {
@@ -119,11 +100,12 @@ export interface PortfolioData {
   skills: {
     data: Skill[];
   };
+  location: string;
+  currentFocus: string;
   degrees: Degree[];
   certifications: Certification[];
   experience: Experience;
   projectsHeader: ProjectsHeader;
   projects: Project[];
   contactData: ContactData;
-  blogSection: BlogSection;
 }

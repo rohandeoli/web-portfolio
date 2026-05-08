@@ -5,10 +5,19 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(), 
+    react(),
     tailwindcss()
   ],
   build: {
-    sourcemap: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router'],
+          'mui': ['@mui/material', '@emotion/react', '@emotion/styled'],
+          'framer-motion': ['framer-motion'],
+        },
+      },
+    },
   }
 })

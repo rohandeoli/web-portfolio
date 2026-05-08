@@ -12,7 +12,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 const BentoSkills = () => {
   const theme = useTheme();
-  const { skills } = portfolioData;
+  const { skills, location, currentFocus } = portfolioData;
 
   return (
     <Container maxWidth="lg" sx={{ py: 10 }}>
@@ -147,7 +147,7 @@ const BentoSkills = () => {
           >
             <Globe size={40} color={theme.palette.primary.main} style={{ marginBottom: "16px" }} />
             <Typography variant="h6" fontWeight={600}>Based in</Typography>
-            <Typography color="text.secondary">Bengaluru, Karnataka, India 🇮🇳</Typography>
+            <Typography color="text.secondary">{location}</Typography>
           </Paper>
         </Box>
         
@@ -178,10 +178,7 @@ const BentoSkills = () => {
               <Cpu size={120} />
             </Box>
             <Typography variant="h6" fontWeight={600} mb={1}>Current Focus</Typography>
-            <Typography color="text.secondary">
-              Architecting high-performance web applications and migrating legacy systems 
-              to modern Micro Frontend architectures.
-            </Typography>
+            <Typography color="text.secondary">{currentFocus}</Typography>
           </Paper>
         </Box>
       </Box>

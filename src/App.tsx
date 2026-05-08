@@ -1,10 +1,10 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, CircularProgress, CssBaseline, ThemeProvider } from '@mui/material';
 import { useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router';
-import './App.css';
 import { themes } from './theme';
 import Clarity from '@microsoft/clarity';
 import Layout from './components/Layout/Layout';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -16,8 +16,11 @@ const Projects = lazy(() => import('./pages/Projects/Projects'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
-// Simple loading fallback
-const Loading = () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#E3405F' }}>Loading...</div>;
+const Loading = () => (
+  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
+    <CircularProgress sx={{ color: 'primary.main' }} />
+  </Box>
+);
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -31,14 +34,16 @@ const AnimatedRoutes = () => {
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </motion.div>
     </AnimatePresence>
   );
@@ -76,11 +81,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          <Suspense fallback={<Loading />}>
+          <ErrorBoundary>
             <Layout setTheme={toggleTheme}>
               <AnimatedRoutes />
             </Layout>
-          </Suspense>
+          </ErrorBoundary>
         </BrowserRouter>
       </ThemeProvider>
     </HelmetProvider>

@@ -2,25 +2,15 @@ import { Box, Container, Paper, Typography, useTheme, Link } from "@mui/material
 import { motion } from "framer-motion";
 import { portfolioData } from "../../portfolioData";
 import { Calendar, MapPin, ExternalLink } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "../../components/PageMeta/PageMeta";
 
 const Experience = () => {
   const theme = useTheme();
-  const { experience, greeting } = portfolioData;
+  const { experience } = portfolioData;
 
   return (
     <Box sx={{ py: 10 }}>
-      <Helmet>
-        <title>{greeting.full_name} | Experience</title>
-        <meta name="description" content={experience.description} />
-        <meta property="og:title" content={`${greeting.full_name} | Experience`} />
-        <meta property="og:description" content={experience.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${greeting.siteUrl}/experience`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${greeting.full_name} | Experience`} />
-        <meta name="twitter:description" content={experience.description} />
-      </Helmet>
+      <PageMeta pageTitle="Experience" description={experience.description} path="/experience" />
       <Container maxWidth="lg">
         <Box sx={{ mb: 8, textAlign: "center" }}>
           <motion.div
@@ -174,7 +164,7 @@ const Experience = () => {
                             sx={{ 
                               color: theme.palette.text.secondary, 
                               mb: 0.5,
-                              fontFamily: 'monospace',
+                              fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
                             }}
                           >
                             {">"} {contrib}

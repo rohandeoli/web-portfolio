@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { portfolioData } from "../../portfolioData";
 import { FileText, Send } from "lucide-react";
 import { Icon } from "@iconify-icon/react";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "../../components/PageMeta/PageMeta";
 
 const Contact = () => {
   const theme = useTheme();
@@ -18,17 +18,7 @@ const Contact = () => {
 
   return (
     <Box sx={{ py: 10 }}>
-      <Helmet>
-        <title>{greeting.full_name} | Contact</title>
-        <meta name="description" content={contactData.description} />
-        <meta property="og:title" content={`${greeting.full_name} | Contact`} />
-        <meta property="og:description" content={contactData.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${greeting.siteUrl}/contact`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${greeting.full_name} | Contact`} />
-        <meta name="twitter:description" content={contactData.description} />
-      </Helmet>
+      <PageMeta pageTitle="Contact" description={contactData.description} path="/contact" />
       <Container maxWidth="lg">
         <Box sx={{ mb: 8, textAlign: "center" }}>
           <motion.div

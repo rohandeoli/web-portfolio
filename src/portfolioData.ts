@@ -5,7 +5,6 @@ export const portfolioData: PortfolioData = {
     title: "Hello 👋.",
     title2: "Rohan",
     logo_name: "rohan.d()",
-    nickname: "rohan / picleric",
     full_name: "Rohan Deoli",
     subTitle: "Senior Full Stack Engineer & Specialist Programmer | 5+ Years of Expertise in Architecting Scalable Web Ecosystems 🔥.",
     resumeLink: "https://drive.google.com/file/d/1_wBCEEgbqTyPPt78wHIVMZiGe20iwoKB/view?usp=sharing",
@@ -104,11 +103,12 @@ export const portfolioData: PortfolioData = {
       },
     ],
   },
+  location: "Bengaluru, Karnataka, India 🇮🇳",
+  currentFocus: "Architecting high-performance web applications and migrating legacy systems to modern Micro Frontend architectures.",
   degrees: [
     {
       title: "Graphic Era Deemed University",
       subtitle: "Bachelors in Technology",
-      alt_name: "GEU",
       duration: "2016 - 2020",
       descriptions: [
         "⚡ Majored in Computer Science and Engineering with a focus on core software principles.",
@@ -123,17 +123,12 @@ export const portfolioData: PortfolioData = {
     {
       title: "Responsive Web Design",
       subtitle: "Free Code Camp",
-      logo_path: "fcc.png",
       certificate_link: "https://www.freecodecamp.org/certification/rohan1010/responsive-web-design",
-      alt_name: "Free Code Camp",
-      color_code: "#47A048",
     },
   ],
   experience: {
     title: "Experience",
-    subtitle: "A Journey of Technical Leadership and Innovation",
     description: "Senior Software Engineer with over 5 years of industry experience, specializing in crafting high-performance UI ecosystems and scalable backend architectures. Proven track record in leading critical digital transformations, migrating monolithic systems to modern Micro-Frontend designs, and delivering robust solutions for global clients like PwC. Adept at bridging the gap between complex business requirements and elegant technical implementations.",
-    header_image_path: "experience.svg",
     sections: [
       {
         title: "Professional Experience",
@@ -142,7 +137,6 @@ export const portfolioData: PortfolioData = {
             title: "Specialist Programmer L2",
             company: "Infosys Ltd.",
             company_url: "https://www.infosys.com/",
-            logo_path: "crest.png",
             duration: "Apr 2024 - Present",
             location: "Bengaluru, Karnataka",
             description: [
@@ -161,7 +155,6 @@ export const portfolioData: PortfolioData = {
             title: "Specialist Programmer",
             company: "Infosys Ltd.",
             company_url: "https://www.infosys.com/",
-            logo_path: "crest.png",
             duration: "Jan 2022 - Apr 2024",
             location: "Bengaluru, Karnataka",
             description: [
@@ -179,7 +172,6 @@ export const portfolioData: PortfolioData = {
             title: "Digital Specialist Engineer",
             company: "Infosys Ltd.",
             company_url: "https://www.infosys.com/",
-            logo_path: "crest.png",
             duration: "Jan 2021 - Jan 2022",
             location: "Bengaluru, Karnataka",
             description: [
@@ -200,7 +192,6 @@ export const portfolioData: PortfolioData = {
   projectsHeader: {
     title: "Project Portfolio",
     description: "A curated selection of my technical contributions, ranging from blockchain solutions to systems engineering. These projects demonstrate my ability to tackle complex challenges across different domains.",
-    avatar_image_path: "projects_image.svg",
   },
   projects: [
     {
@@ -263,14 +254,6 @@ export const portfolioData: PortfolioData = {
   ],
   contactData: {
     title: "Get In Touch",
-    profile_image_path: "hari-crop.png",
     description: "I am always open to discussing high-impact projects, architectural challenges, or senior-level opportunities. Whether you have a question or just want to connect, my inbox is always open.",
-    resumeLink: "https://drive.google.com/file/d/1_wBCEEgbqTyPPt78wHIVMZiGe20iwoKB/view?usp=sharing",
-  },
-  blogSection: {
-    title: "Technical Writing",
-    subtitle: "I share deep-dives into software architecture, frontend performance, and my journey in the tech ecosystem. Bridging the gap between code and conceptual understanding.",
-    link: "https://medium.com/@rohan.deoli98",
-    avatar_image_path: "blogs_image.svg",
   },
 };

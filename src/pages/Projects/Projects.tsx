@@ -2,25 +2,15 @@ import { Box, Container, Typography, useTheme } from "@mui/material";
 import { portfolioData } from "../../portfolioData";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import PageMeta from "../../components/PageMeta/PageMeta";
 
 function Projects() {
   const theme = useTheme();
-  const { projects, projectsHeader, greeting } = portfolioData;
+  const { projects, projectsHeader } = portfolioData;
 
   return (
     <Box sx={{ py: 10 }}>
-      <Helmet>
-        <title>{greeting.full_name} | Projects</title>
-        <meta name="description" content={projectsHeader.description} />
-        <meta property="og:title" content={`${greeting.full_name} | Projects`} />
-        <meta property="og:description" content={projectsHeader.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${greeting.siteUrl}/projects`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${greeting.full_name} | Projects`} />
-        <meta name="twitter:description" content={projectsHeader.description} />
-      </Helmet>
+      <PageMeta pageTitle="Projects" description={projectsHeader.description} path="/projects" />
       <Container maxWidth="lg">
         <Box sx={{ mb: 8, textAlign: "center" }}>
           <motion.div

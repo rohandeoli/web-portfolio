@@ -21,9 +21,38 @@ const Layout = ({ children, setTheme }: LayoutProps) => {
         color: theme.palette.text.primary,
       }}
     >
+      <Box
+        component="a"
+        href="#main-content"
+        sx={{
+          position: "absolute",
+          top: 8,
+          left: 8,
+          px: 2,
+          py: 1,
+          backgroundColor: theme.palette.primary.main,
+          color: "#fff",
+          fontWeight: 700,
+          borderRadius: 1,
+          textDecoration: "none",
+          zIndex: 9999,
+          transform: "translateY(-200%)",
+          transition: "transform 0.2s",
+          "&:focus": {
+            transform: "translateY(0)",
+          },
+        }}
+      >
+        Skip to content
+      </Box>
       <Header setTheme={setTheme} />
-      
-      <Box component="main" sx={{ flexGrow: 1, paddingTop: "80px" }}>
+
+      <Box
+        component="main"
+        id="main-content"
+        tabIndex={-1}
+        sx={{ flexGrow: 1, paddingTop: "80px", "&:focus": { outline: "none" } }}
+      >
         {children}
       </Box>
 
