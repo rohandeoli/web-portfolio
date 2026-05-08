@@ -6,8 +6,8 @@ import { Icon } from "@iconify-icon/react";
 import React from "react";
 
 const iconMap: Record<string, React.ReactNode> = {
-  "Front End Development": <LayoutIcon size={24} />,
-  "Back End Development": <Server size={24} />,
+  "Frontend Engineering & Architecture": <LayoutIcon size={24} />,
+  "Backend & Cloud Infrastructure": <Server size={24} />,
 };
 
 const BentoSkills = () => {
@@ -31,7 +31,7 @@ const BentoSkills = () => {
         }}
       >
         {skills.data.map((skillGroup, index) => (
-          <Box key={index} sx={{ gridColumn: { xs: "span 1", md: "span 6" } }}>
+          <Box key={skillGroup.title} sx={{ gridColumn: { xs: "span 1", md: "span 6" } }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}

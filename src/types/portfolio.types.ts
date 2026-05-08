@@ -14,6 +14,7 @@ export interface Greeting {
   subTitle: string;
   resumeLink: string;
   mail: string;
+  siteUrl: string;
 }
 
 export interface SoftwareSkill {
@@ -24,7 +25,6 @@ export interface SoftwareSkill {
 
 export interface Skill {
   title: string;
-  fileName: string;
   skills: string[];
   softwareSkills: SoftwareSkill[];
 }

@@ -21,6 +21,13 @@ const Contact = () => {
       <Helmet>
         <title>{greeting.full_name} | Contact</title>
         <meta name="description" content={contactData.description} />
+        <meta property="og:title" content={`${greeting.full_name} | Contact`} />
+        <meta property="og:description" content={contactData.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${greeting.siteUrl}/contact`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${greeting.full_name} | Contact`} />
+        <meta name="twitter:description" content={contactData.description} />
       </Helmet>
       <Container maxWidth="lg">
         <Box sx={{ mb: 8, textAlign: "center" }}>
@@ -74,9 +81,9 @@ const Contact = () => {
               </Typography>
               
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center", mb: 6 }}>
-                {socials.map((social, index) => (
+                {socials.map((social) => (
                   <motion.div
-                    key={index}
+                    key={social.name}
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -84,6 +91,7 @@ const Contact = () => {
                       variant="outlined"
                       href={social.url}
                       target="_blank"
+                      rel="noopener noreferrer"
                       startIcon={<Icon icon={social.icon} width={20} height={20} />}
                       sx={{
                         px: 3,
@@ -109,6 +117,7 @@ const Contact = () => {
                   size="large"
                   href={greeting.resumeLink}
                   target="_blank"
+                  rel="noopener noreferrer"
                   startIcon={<FileText size={20} />}
                   sx={{
                     px: 6,

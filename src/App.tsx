@@ -14,6 +14,7 @@ const Education = lazy(() => import('./pages/Education/Education'));
 const Experience = lazy(() => import('./pages/Experience/Experience'));
 const Projects = lazy(() => import('./pages/Projects/Projects'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 // Simple loading fallback
 const Loading = () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#E3405F' }}>Loading...</div>;
@@ -32,12 +33,11 @@ const AnimatedRoutes = () => {
       >
         <Routes location={location}>
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/education" element={<Education />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

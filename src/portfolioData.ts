@@ -10,6 +10,7 @@ export const portfolioData: PortfolioData = {
     subTitle: "Senior Full Stack Engineer & Specialist Programmer | 5+ Years of Expertise in Architecting Scalable Web Ecosystems 🔥.",
     resumeLink: "https://drive.google.com/file/d/1_wBCEEgbqTyPPt78wHIVMZiGe20iwoKB/view?usp=sharing",
     mail: "mailto:rohan.deoli98@gmail.com",
+    siteUrl: "https://rohandeoli.netlify.app",
   },
   socialMediaLinks: {
     github: "https://github.com/rohandeoli",
@@ -21,7 +22,6 @@ export const portfolioData: PortfolioData = {
     data: [
       {
         title: "Frontend Engineering & Architecture",
-        fileName: "FullStackImg",
         skills: [
           "⚡ Architecting highly interactive, performant User Interfaces for enterprise-scale applications",
           "⚡ Specializing in Angular Micro-Frontend (MFE) migrations and React ecosystem integration",
@@ -68,7 +68,6 @@ export const portfolioData: PortfolioData = {
       },
       {
         title: "Backend & Cloud Infrastructure",
-        fileName: "CloudInfraImg",
         skills: [
           "⚡ Engineering scalable Microservices using Node.js, NestJS, and Spring Boot",
           "⚡ Designing robust RESTful and GraphQL APIs for seamless data flow",

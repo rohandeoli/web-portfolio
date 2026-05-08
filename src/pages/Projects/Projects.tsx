@@ -13,6 +13,13 @@ function Projects() {
       <Helmet>
         <title>{greeting.full_name} | Projects</title>
         <meta name="description" content={projectsHeader.description} />
+        <meta property="og:title" content={`${greeting.full_name} | Projects`} />
+        <meta property="og:description" content={projectsHeader.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${greeting.siteUrl}/projects`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${greeting.full_name} | Projects`} />
+        <meta name="twitter:description" content={projectsHeader.description} />
       </Helmet>
       <Container maxWidth="lg">
         <Box sx={{ mb: 8, textAlign: "center" }}>
@@ -51,16 +58,15 @@ function Projects() {
           }}
         >
           {projects.map((project, index) => (
-            <Box key={project.id}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                style={{ height: "100%" }}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            </Box>
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              style={{ height: "100%" }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
         </Box>
       </Container>

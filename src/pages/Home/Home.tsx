@@ -10,6 +10,13 @@ function Home() {
       <Helmet>
         <title>{portfolioData.greeting.full_name} | Home</title>
         <meta name="description" content={portfolioData.greeting.subTitle} />
+        <meta property="og:title" content={`${portfolioData.greeting.full_name} | Home`} />
+        <meta property="og:description" content={portfolioData.greeting.subTitle} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={portfolioData.greeting.siteUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${portfolioData.greeting.full_name} | Home`} />
+        <meta name="twitter:description" content={portfolioData.greeting.subTitle} />
       </Helmet>
       <Hero />
       <BentoSkills />

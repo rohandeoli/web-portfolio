@@ -21,7 +21,7 @@ const Layout = ({ children, setTheme }: LayoutProps) => {
         color: theme.palette.text.primary,
       }}
     >
-      <Header theme={theme} setTheme={setTheme} />
+      <Header setTheme={setTheme} />
       
       <Box component="main" sx={{ flexGrow: 1, paddingTop: "80px" }}>
         {children}

@@ -13,6 +13,13 @@ const Education = () => {
       <Helmet>
         <title>{greeting.full_name} | Education</title>
         <meta name="description" content={`Education and Certifications of ${greeting.full_name}`} />
+        <meta property="og:title" content={`${greeting.full_name} | Education`} />
+        <meta property="og:description" content={`Education and Certifications of ${greeting.full_name}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${greeting.siteUrl}/education`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${greeting.full_name} | Education`} />
+        <meta name="twitter:description" content={`Education and Certifications of ${greeting.full_name}`} />
       </Helmet>
       <Container maxWidth="lg">
         {/* Degrees Section */}
@@ -41,7 +48,7 @@ const Education = () => {
           <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
             {degrees.map((degree, index) => (
               <motion.div
-                key={index}
+                key={degree.title}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -78,6 +85,7 @@ const Education = () => {
                         <Link
                           href={degree.website_link}
                           target="_blank"
+                          rel="noopener noreferrer"
                           sx={{ color: theme.palette.primary.main, display: "flex", alignItems: "center", justifyContent: "flex-end", mt: 1, gap: 0.5 }}
                         >
                           <Typography variant="caption" fontWeight={600}>Website</Typography>
@@ -142,7 +150,7 @@ const Education = () => {
             }}
           >
             {certifications.map((cert, index) => (
-              <Box key={index}>
+              <Box key={cert.title}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -184,10 +192,11 @@ const Education = () => {
                     <Link
                       href={cert.certificate_link}
                       target="_blank"
-                      sx={{ 
-                        display: "flex", 
-                        alignItems: "center", 
-                        gap: 1, 
+                      rel="noopener noreferrer"
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1,
                         color: theme.palette.primary.main,
                         textDecoration: "none",
                         fontWeight: 700,

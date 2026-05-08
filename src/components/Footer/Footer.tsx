@@ -52,11 +52,12 @@ function Footer() {
           </Box>
 
           <Box sx={{ display: "flex", gap: 3 }}>
-            {socials.map((social, index) => (
+            {socials.map((social) => (
               <Link
-                key={index}
+                key={social.url}
                 href={social.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   color: "text.secondary",
                   transition: "all 0.2s",

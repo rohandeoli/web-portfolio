@@ -1,12 +1,19 @@
 import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
 import { AppBar, Box, Container, IconButton, Toolbar, Typography, useTheme, Button, useScrollTrigger } from "@mui/material";
-import { Theme } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { portfolioData } from "../../portfolioData";
 import { motion, AnimatePresence } from "framer-motion";
 
-function Header(props: { theme: Theme; setTheme: () => void; }) {
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Education', path: '/education' },
+  { name: 'Experience', path: '/experience' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'Contact', path: '/contact' },
+];
+
+function Header(props: { setTheme: () => void; }) {
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
@@ -18,13 +25,6 @@ function Header(props: { theme: Theme; setTheme: () => void; }) {
   });
 
   const { greeting } = portfolioData;
-  const navItems = [
-    { name: 'Home', path: '/home' },
-    { name: 'Education', path: '/education' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
-  ];
 
   const handleNavClick = (path: string) => {
     navigate(path);

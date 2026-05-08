@@ -45,6 +45,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   component={Link}
                   href={link.url}
                   target="_blank"
+                  rel="noopener noreferrer"
                   size="small"
                   aria-label={link.name === "Github" ? `View source code for ${project.name}` : `View live demo for ${project.name}`}
                   sx={{ 

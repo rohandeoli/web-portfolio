@@ -69,6 +69,7 @@ const Hero = () => {
               startIcon={<FileText size={20} />}
               href={greeting.resumeLink}
               target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 px: 4,
                 py: 1.5,
@@ -111,12 +112,13 @@ const Hero = () => {
             {[
               { icon: "ri:github-fill", url: socialMediaLinks.github, label: "GitHub Profile" },
               { icon: "ri:linkedin-box-fill", url: socialMediaLinks.linkedin, label: "LinkedIn Profile" },
-            ].map((social, index) => (
+            ].map((social) => (
               <Box
-                key={index}
+                key={social.url}
                 component="a"
                 href={social.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.label}
                 sx={{
                   color: theme.palette.text.secondary,

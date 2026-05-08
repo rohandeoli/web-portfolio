@@ -13,6 +13,13 @@ const Experience = () => {
       <Helmet>
         <title>{greeting.full_name} | Experience</title>
         <meta name="description" content={experience.description} />
+        <meta property="og:title" content={`${greeting.full_name} | Experience`} />
+        <meta property="og:description" content={experience.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${greeting.siteUrl}/experience`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${greeting.full_name} | Experience`} />
+        <meta name="twitter:description" content={experience.description} />
       </Helmet>
       <Container maxWidth="lg">
         <Box sx={{ mb: 8, textAlign: "center" }}>
@@ -53,7 +60,7 @@ const Experience = () => {
           backgroundColor: theme.palette.custom.border,
           transform: { md: "translateX(-50%)" },
         }}}>
-          {experience.sections[0].experiences.map((exp, index) => (
+          {experience.sections.flatMap((section) => section.experiences).map((exp, index) => (
             <Box
               key={index}
               sx={{
@@ -109,6 +116,7 @@ const Experience = () => {
                       <Link
                         href={exp.company_url}
                         target="_blank"
+                        rel="noopener noreferrer"
                         sx={{ color: theme.palette.primary.main, display: "flex", alignItems: "center" }}
                       >
                         <ExternalLink size={18} />
