@@ -1,51 +1,71 @@
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import './Projects.css';
-import ProjectsImg from "./ProjectsImg";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import { portfolioData } from "../../portfolioData";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
-function Projects(props: { theme: any; setTheme: (theme: any) => void }) {
-    const { theme, setTheme } = props;
-    const { projectsHeader, projects } = portfolioData;
+function Projects() {
+  const theme = useTheme();
+  const { projects, projectsHeader, greeting } = portfolioData;
 
-    return (
-        <div className="projects-main">
-            <Header theme={theme} setTheme={setTheme} />
-            <div className="basic-projects">
-                <div className="projects-heading-div">
-                    <div className="projects-heading-img-div">
-                        <ProjectsImg theme={theme} />
-                    </div>
-                    <div className="projects-heading-text-div">
-                        <h1
-                            className="projects-heading-text"
-                            style={{ color: theme.text }}
-                        >
-                            {projectsHeader.title}
-                        </h1>
-                        <p
-                            className="projects-header-detail-text subTitle"
-                            style={{ color: theme.secondaryText }}
-                        >
-                            {projectsHeader["description"]}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="repo-cards-div-main">
-                {projects.map((repo) => {
-                    return <ProjectCard key={repo.id} project={repo} theme={theme} />;
-                })}
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Footer theme={props.theme} />
-        </div>
-    );
-};
+  return (
+    <Box sx={{ py: 10 }}>
+      <Helmet>
+        <title>{greeting.full_name} | Projects</title>
+        <meta name="description" content={projectsHeader.description} />
+      </Helmet>
+      <Container maxWidth="lg">
+        <Box sx={{ mb: 8, textAlign: "center" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                mb: 2,
+                fontWeight: 800,
+                background: `linear-gradient(135deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 100%)`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              {projectsHeader.title}
+            </Typography>
+            <Typography
+              variant="h6"
+              color="text.secondary"
+              sx={{ maxWidth: "700px", mx: "auto", lineHeight: 1.6 }}
+            >
+              {projectsHeader.description}
+            </Typography>
+          </motion.div>
+        </Box>
+
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+            gap: 4,
+          }}
+        >
+          {projects.map((project, index) => (
+            <Box key={project.id}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                style={{ height: "100%" }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    </Box>
+  );
+}
 
 export default Projects;

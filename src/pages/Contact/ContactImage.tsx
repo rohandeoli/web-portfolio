@@ -1,4 +1,6 @@
-function ContactImage(props: { theme: any }) {
+import { Theme } from '@mui/material/styles';
+
+function ContactImage(props: { theme: Theme }) {
     const { theme } = props;
     return (
         <svg

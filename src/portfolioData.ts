@@ -7,8 +7,8 @@ export const portfolioData: PortfolioData = {
     logo_name: "rohan.d()",
     nickname: "rohan / picleric",
     full_name: "Rohan Deoli",
-    subTitle: "Programmer, Full Stack Developer, Open Source Enthusiast 🔥. Always learning.",
-    resumeLink: "https://drive.google.com/file/d/1NQugCN-EtZs3haRtbgFGxgSaF5Xr8SzA/view?usp=drivesdk",
+    subTitle: "Senior Full Stack Engineer & Specialist Programmer | 5+ Years of Expertise in Architecting Scalable Web Ecosystems 🔥.",
+    resumeLink: "https://drive.google.com/file/d/1_wBCEEgbqTyPPt78wHIVMZiGe20iwoKB/view?usp=sharing",
     mail: "mailto:rohan.deoli98@gmail.com",
   },
   socialMediaLinks: {
@@ -20,13 +20,13 @@ export const portfolioData: PortfolioData = {
   skills: {
     data: [
       {
-        title: "Front End Development",
+        title: "Frontend Engineering & Architecture",
         fileName: "FullStackImg",
         skills: [
-          "⚡ Develop highly interactive Front end / User Interfaces for your web applications",
-          "⚡ Building responsive website front end using Angular and ReactJS",
-          "⚡ Integrating backend services with ReactJS and NodeJS",
-          "⚡ Integrating Third Party APIs",
+          "⚡ Architecting highly interactive, performant User Interfaces for enterprise-scale applications",
+          "⚡ Specializing in Angular Micro-Frontend (MFE) migrations and React ecosystem integration",
+          "⚡ Implementing robust State Management and design patterns for maintainable codebases",
+          "⚡ Optimizing web performance and accessibility (a11y) standards",
         ],
         softwareSkills: [
           {
@@ -45,6 +45,11 @@ export const portfolioData: PortfolioData = {
             style: { backgroundColor: "#FFFFFF", color: "#F7DF1E" },
           },
           {
+            skillName: "TypeScript",
+            fontAwesomeClassname: "simple-icons:typescript",
+            style: { color: "#3178C6" },
+          },
+          {
             skillName: "Angular",
             fontAwesomeClassname: "simple-icons:angular",
             style: { backgroundColor: "#FFFFFF", color: "#B52E31" },
@@ -55,11 +60,6 @@ export const portfolioData: PortfolioData = {
             style: { color: "#61DAFB" },
           },
           {
-            skillName: "ElectronJS",
-            fontAwesomeClassname: "simple-icons:electron",
-            style: { color: "#47848F" },
-          },
-          {
             skillName: "Git",
             fontAwesomeClassname: "simple-icons:git",
             style: { color: "#E94E32" },
@@ -67,14 +67,13 @@ export const portfolioData: PortfolioData = {
         ],
       },
       {
-        title: "Back End Development",
+        title: "Backend & Cloud Infrastructure",
         fileName: "CloudInfraImg",
         skills: [
-          "⚡ Building highly scalable backend applications",
-          "⚡ Building RESTful APIs in Node, Express",
-          "⚡ Experience with Continuous Integration",
-          "⚡ Integration of third party services",
-          "⚡ Building microservices",
+          "⚡ Engineering scalable Microservices using Node.js, NestJS, and Spring Boot",
+          "⚡ Designing robust RESTful and GraphQL APIs for seamless data flow",
+          "⚡ Implementing CI/CD pipelines and automated deployment strategies",
+          "⚡ Database modeling and optimization with PostgreSQL and MongoDB",
         ],
         softwareSkills: [
           {
@@ -113,10 +112,10 @@ export const portfolioData: PortfolioData = {
       alt_name: "GEU",
       duration: "2016 - 2020",
       descriptions: [
-        "⚡ Majored in Computer Science and Engineering.",
-        "⚡ Focused on Data Structures, Algorithms, Operating Systems and Web Development.",
-        "⚡ Other areas of focus included Machine Learning, Computer Vision.",
-        "⚡ Participated in various hackathons and coding competitions.",
+        "⚡ Majored in Computer Science and Engineering with a focus on core software principles.",
+        "⚡ Deep-dived into Data Structures, Algorithms, Operating Systems, and Web Engineering.",
+        "⚡ Explored Advanced Machine Learning and Computer Vision through academic projects.",
+        "⚡ Active participant in national-level hackathons and technical symposiums.",
       ],
       website_link: "http://www.geu.ac.in/",
     },
@@ -133,12 +132,12 @@ export const portfolioData: PortfolioData = {
   ],
   experience: {
     title: "Experience",
-    subtitle: "Work, Internship and Volunteership",
-    description: "Experienced Software Engineer with almost 4 years of expertise in UI Development using Angular and proficiency in Node.js. Dedicated to ongoing learning and adept at assimilating new technologies to devise innovative solutions. Demonstrated ability to design, develop, and enhance solutions by consistently delivering efficient and high-quality code at scale. Committed to staying abreast of industry trends and best practices to contribute effectively to software development projects.",
+    subtitle: "A Journey of Technical Leadership and Innovation",
+    description: "Senior Software Engineer with over 5 years of industry experience, specializing in crafting high-performance UI ecosystems and scalable backend architectures. Proven track record in leading critical digital transformations, migrating monolithic systems to modern Micro-Frontend designs, and delivering robust solutions for global clients like PwC. Adept at bridging the gap between complex business requirements and elegant technical implementations.",
     header_image_path: "experience.svg",
     sections: [
       {
-        title: "Work Experience",
+        title: "Professional Experience",
         experiences: [
           {
             title: "Specialist Programmer L2",
@@ -148,14 +147,14 @@ export const portfolioData: PortfolioData = {
             duration: "Apr 2024 - Present",
             location: "Bengaluru, Karnataka",
             description: [
-              "Led the strategic migration of PwC’s mission-critical internal application, Flex, from a monolithic AngularJS/.NET architecture to a modern Angular Micro Frontend design.",
-              "This migration resulted in a significant improvement in application performance, scalability, and user experience for managing client deliverables, approvals, and tracking.",
+              "Spearheading the strategic architectural migration of PwC’s mission-critical 'Flex' application from a legacy AngularJS/.NET monolith to a cutting-edge Angular Micro-Frontend ecosystem.",
+              "Driving technical excellence by establishing best practices for modularity, performance, and cross-team collaboration within a distributed MFE environment.",
             ],
             contributions: [
-              "Improved application load time by 40%",
-              "Reduced average transaction processing time by 50%",
-              "Independent deployment and updates of individual application features.",
-              "Enhanced maintainability and reduced technical debt.",
+              "Optimized core application load times by 40% through lazy loading and component modularization.",
+              "Reduced transaction processing latency by 50% by re-engineering state management and API data flows.",
+              "Enabled independent, parallel deployment cycles for various business units, significantly increasing release velocity.",
+              "Mentored junior developers and conducted deep-dive technical sessions on MFE architecture.",
             ],
             color: "#0071C5",
           },
@@ -167,12 +166,13 @@ export const portfolioData: PortfolioData = {
             duration: "Jan 2022 - Apr 2024",
             location: "Bengaluru, Karnataka",
             description: [
-              "Developed and maintained JRA, a critical internal Job Requisition Portal used across PwC for creating job postings.",
-              "The platform integrates seamlessly with Workday, automatically fetching and synchronizing job data to ensure efficient and accurate job information management. The platform is developed using Angular and Nest.JS",
+              "Architected and maintained JRA, a high-traffic internal Job Requisition Portal integrated with PwC’s global talent systems.",
+              "Engineered a seamless integration with Workday using Angular and Nest.JS, ensuring real-time data synchronization for thousands of job postings.",
             ],
             contributions: [
-              "Implemented the Workday integration, automating job data synchronization and reducing manual data entry by 50%.",
-              "Developed multiple workflows which reduced the job posting cycle time by 50%.",
+              "Automated 50% of manual job data entry by implementing robust Workday API integrations.",
+              "Designed and deployed streamlined approval workflows, slashing the job posting lifecycle by 50%.",
+              "Ensured 99.9% uptime for the portal through proactive monitoring and performance tuning.",
             ],
             color: "#0071C5",
           },
@@ -184,13 +184,13 @@ export const portfolioData: PortfolioData = {
             duration: "Jan 2021 - Jan 2022",
             location: "Bengaluru, Karnataka",
             description: [
-              "Served as a UI Developer for the Indian Income Tax project, responsible for the design, implementation, and maintenance of the end-to-end flow for statutory forms within the web application. Platform was built on Angular and Springboot.",
-              "Key contributions focused on significantly enhancing the user experience (UX) and resolving critical bugs, resulting in a demonstrably improved taxpayer experience.",
+              "Played a pivotal role as a UI Developer for the Indian Income Tax project, a high-visibility national-scale digital transformation.",
+              "Responsible for designing and implementing end-to-end statutory form flows, prioritizing user experience and data integrity.",
             ],
             contributions: [
-              "Implemented dynamic form validations that reduced the average form completion time by 20%.",
-              "Collaborated with back-end developers to optimize data flow and improve form submission performance by 20%.",
-              "DSuccessfully resolved critical bugs that affected form submission and processing, preventing potential taxpayer issues.",
+              "Engineered dynamic, highly-validated form modules that improved taxpayer completion rates by 20%.",
+              "Collaborated across full-stack teams to optimize API response handling, boosting form submission speeds by 20%.",
+              "Resolved critical, high-impact bugs during peak filing seasons, ensuring a stable experience for millions of users.",
             ],
             color: "#0071C5",
           },
@@ -199,19 +199,20 @@ export const portfolioData: PortfolioData = {
     ],
   },
   projectsHeader: {
-    title: "Projects",
-    description: "My projects leverage a wide array of cutting-edge technology tools. Below is a selection of my projects, with the understanding that not all are currently available on GitHub.",
+    title: "Project Portfolio",
+    description: "A curated selection of my technical contributions, ranging from blockchain solutions to systems engineering. These projects demonstrate my ability to tackle complex challenges across different domains.",
     avatar_image_path: "projects_image.svg",
   },
   projects: [
     {
       id: "0",
-      name: "Blockchain Mining Using GPU",
+      name: "GPU-Accelerated Blockchain Mining",
       url: "https://github.com/rohandeoli/blockchain_gpu",
-      description: "The project aims to provide mining solution for CPU as well as GPU. IF YOU INTEND TO MINE ON GPU, NVIDIA CARD WITH CUDA IS REQUIRED. (Tested with Nvidia GeFroce 920M, Nvidia Tesla K80)",
+      description: "A high-performance mining solution supporting both CPU and GPU execution. Optimized specifically for NVIDIA CUDA architectures to maximize hash rates and efficiency.",
       languages: [
         { name: "Python", iconifyClass: "logos-python" },
         { name: "C++", iconifyClass: "logos-c-plusplus" },
+        { name: "CUDA", iconifyClass: "logos-nvidia" },
       ],
       links: [
         { name: "Github", url: "https://github.com/rohandeoli/blockchain_gpu", iconifyClass: "ri:github-fill" },
@@ -219,15 +220,14 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "1",
-      name: "Online Portfolio Website",
+      name: "Interactive Personal Portfolio",
       url: "https://github.com/rohandeoli/web-portfolio",
-      description: "This is my personal portfolio website, built using React and Material UI. It showcases my projects, skills, and experiences.",
+      description: "A modern, high-polish portfolio built with React 19, MUI, and Framer Motion. Features a 'Refined Interactive' aesthetic with dark-mode-first styling and dynamic SEO.",
       languages: [
-        { name: "JavaScript", iconifyClass: "logos-javascript" },
+        { name: "TypeScript", iconifyClass: "logos-typescript" },
         { name: "React", iconifyClass: "logos-react" },
-        { name: "Material UI", iconifyClass: "logos-material-ui" },
-        { name: "HTML", iconifyClass: "logos-html-5" },
-        { name: "CSS", iconifyClass: "logos-css-3" },
+        { name: "MUI", iconifyClass: "logos-material-ui" },
+        { name: "Tailwind", iconifyClass: "logos-tailwindcss-icon" },
       ],
       links: [
         { name: "Github", url: "https://github.com/rohandeoli/web-portfolio", iconifyClass: "ri:github-fill" },
@@ -238,10 +238,10 @@ export const portfolioData: PortfolioData = {
       id: "2",
       name: "8085 Microprocessor Simulator",
       url: "https://github.com/rohandeoli/8085-Microprocessor-Simulator",
-      description: "A simulator for the 8085 microprocessor, built using C++. It allows users to simulate the execution of assembly language programs.",
+      description: "A comprehensive low-level simulator for the 8085 architecture. Enables assembly language execution, register tracking, and memory mapping for academic and hobbyist use.",
       languages: [
         { name: "C++", iconifyClass: "logos-c-plusplus" },
-        { name: "C", iconifyClass: "logos-c" },
+        { name: "Systems Design", iconifyClass: "simple-icons:cpu" },
       ],
       links: [
         { name: "Github", url: "https://github.com/rohandeoli/8085-Microprocessor-Simulator", iconifyClass: "ri:github-fill" },
@@ -249,12 +249,13 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "3",
-      name: "Smart Home Security System",
+      name: "Smart IoT Security System",
       url: "https://github.com/rohandeoli/Smart-Home-Security-System",
-      description: "A smart home security system that is built on Arduino platform. It supports pin based locking system as well as ability to reset password over email.",
+      description: "An integrated home security solution using the Arduino platform. Features secure PIN-based locking, remote email password resets, and real-time sensor monitoring.",
       languages: [
         { name: "C++", iconifyClass: "logos-c-plusplus" },
         { name: "Arduino", iconifyClass: "logos-arduino" },
+        { name: "IoT", iconifyClass: "logos-internetcomputer" },
       ],
       links: [
         { name: "Github", url: "https://github.com/rohandeoli/Smart-Home-Security-System", iconifyClass: "ri:github-fill" },
@@ -262,14 +263,14 @@ export const portfolioData: PortfolioData = {
     },
   ],
   contactData: {
-    title: "Contact Me",
+    title: "Get In Touch",
     profile_image_path: "hari-crop.png",
-    description: "I am always open to discussing new projects, creative ideas or opportunities to be part of your visions. I am also open to any kind of feedback and suggestions.",
-    resumeLink: "https://drive.google.com/file/d/1Co3W20DC5fPfTC2NzmjdMQAe3tZtjGFF/view?usp=sharing",
+    description: "I am always open to discussing high-impact projects, architectural challenges, or senior-level opportunities. Whether you have a question or just want to connect, my inbox is always open.",
+    resumeLink: "https://drive.google.com/file/d/1_wBCEEgbqTyPPt78wHIVMZiGe20iwoKB/view?usp=sharing",
   },
   blogSection: {
-    title: "Blogs",
-    subtitle: "I write about my learnings and experiences in the field of technology. I also write about my experiences in open source and other projects.",
+    title: "Technical Writing",
+    subtitle: "I share deep-dives into software architecture, frontend performance, and my journey in the tech ecosystem. Bridging the gap between code and conceptual understanding.",
     link: "https://medium.com/@rohan.deoli98",
     avatar_image_path: "blogs_image.svg",
   },

@@ -1,139 +1,150 @@
-import ContrastIcon from '@mui/icons-material/Contrast';
-import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
-import { MouseEvent, useState } from "react";
-import { useNavigate } from "react-router";
+import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
+import { AppBar, Box, Container, IconButton, Toolbar, Typography, useTheme, Button, useScrollTrigger } from "@mui/material";
+import { Theme } from "@mui/material/styles";
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router";
 import { portfolioData } from "../../portfolioData";
+import { motion, AnimatePresence } from "framer-motion";
 
-function Header(props: { theme: any; setTheme: (theme: any) => void; }) {
-    const navigate = useNavigate();
-    const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+function Header(props: { theme: Theme; setTheme: () => void; }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const theme = useTheme();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
 
-    const handleCloseNavMenu = (page: string) => {
-        setAnchorElNav(null);
-        const pageIndex = ['Home', 'Education & Certifications', 'Experience', 'Projects', 'Contact & Resume'].indexOf(page);
-        if (pageIndex !== -1) {
-            navigate(`/${pageRoutes[pageIndex]}`);
-        } else {
-            console.error(`Page "${page}" not found`);
-        }
-    };
+  const { greeting } = portfolioData;
+  const navItems = [
+    { name: 'Home', path: '/home' },
+    { name: 'Education', path: '/education' },
+    { name: 'Experience', path: '/experience' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
-    const { theme, setTheme } = props;
-    const { greeting } = portfolioData;
-    const pages = ['Home', 'Education & Certifications', 'Experience', 'Projects', 'Contact & Resume'];
-    const pageRoutes = ['home', 'education', 'experience', 'projects', 'contact'];
+  const handleNavClick = (path: string) => {
+    navigate(path);
+    setIsMobileMenuOpen(false);
+  };
 
-    return (
-        <AppBar position="fixed" sx={{ backgroundColor: theme.palette.background.default, color: theme.palette.primary.main }}>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            flexGrow: 1,
-                            textAlign: 'left',
-                            cursor: 'pointer',
-                        }}
-                        onClick={() => {
-                            navigate("/");
-                        }}
-                    >
-                        {greeting.full_name}
-                    </Typography>
+  return (
+    <AppBar 
+      position="fixed" 
+      elevation={0}
+      sx={{ 
+        backgroundColor: trigger ? `${theme.palette.background.default}CC` : 'transparent',
+        backdropFilter: trigger ? 'blur(10px)' : 'none',
+        borderBottom: trigger ? `1px solid ${theme.palette.custom.border}` : 'none',
+        transition: 'all 0.3s ease',
+        color: theme.palette.text.primary,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters sx={{ height: 80, justifyContent: 'space-between' }}>
+          <Typography
+            variant="h6"
+            noWrap
+            onClick={() => navigate("/")}
+            sx={{
+              fontWeight: 800,
+              letterSpacing: '-0.02em',
+              cursor: 'pointer',
+              color: theme.palette.primary.main,
+              display: 'flex',
+              alignItems: 'center',
+              fontFamily: 'monospace',
+            }}
+          >
+            {greeting.logo_name}
+          </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="open navigation menu"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={() => setAnchorElNav(null)}
-                            sx={{ display: { xs: 'block', md: 'none' } }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                                    <Typography sx={{ textAlign: 'center', color: theme.palette.text.primary, ':hover': { backgroundColor: theme.palette.custom.headerHover } }}>{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="div"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            cursor: 'pointer',
-                        }}
-                        onClick={() => {
-                            navigate("/");
-                        }}
-                    >
-                        {greeting.full_name}
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={() => handleCloseNavMenu(page)}
-                                sx={{ mx: 1, my: 2, color: theme.palette.text.primary, display: 'block', ':hover': { backgroundColor: theme.palette.custom.headerHover } }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
+          {/* Desktop Nav */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+            {navItems.map((item) => (
+              <Button
+                key={item.name}
+                onClick={() => handleNavClick(item.path)}
+                sx={{
+                  color: location.pathname === item.path ? theme.palette.primary.main : theme.palette.text.primary,
+                  px: 2,
+                  '&:hover': {
+                    backgroundColor: `${theme.palette.primary.main}10`,
+                    color: theme.palette.primary.main,
+                  },
+                  fontWeight: location.pathname === item.path ? 700 : 500,
+                }}
+              >
+                {item.name}
+              </Button>
+            ))}
+          </Box>
 
-                    <IconButton
-                        aria-label={`Switch to ${theme.palette.mode === 'dark' ? 'light' : 'dark'} mode`}
-                        onClick={() => {
-                            setTheme(theme.palette.mode)
-                        }}
-                    >
-                        <ContrastIcon sx={{ color: theme.palette.primary.main }} />
-                    </IconButton>
-                </Toolbar>
-            </Container>
-        </AppBar>
-    );
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <IconButton
+              onClick={props.setTheme}
+              aria-label={`Switch to ${theme.palette.mode === 'dark' ? 'light' : 'dark'} mode`}
+              sx={{ 
+                color: theme.palette.text.primary,
+                '&:hover': { color: theme.palette.primary.main }
+              }}
+            >
+              {theme.palette.mode === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </IconButton>
+
+            <IconButton
+              sx={{ display: { xs: 'flex', md: 'none' }, color: theme.palette.text.primary }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </Container>
+
+      {/* Mobile Nav Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            style={{
+              position: 'fixed',
+              top: 80,
+              left: 0,
+              right: 0,
+              backgroundColor: theme.palette.background.default,
+              borderBottom: `1px solid ${theme.palette.custom.border}`,
+              padding: '20px',
+              zIndex: 1000,
+            }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {navItems.map((item) => (
+                <Button
+                  key={item.name}
+                  fullWidth
+                  onClick={() => handleNavClick(item.path)}
+                  sx={{
+                    justifyContent: 'flex-start',
+                    color: location.pathname === item.path ? theme.palette.primary.main : theme.palette.text.primary,
+                    py: 1.5,
+                  }}
+                >
+                  {item.name}
+                </Button>
+              ))}
+            </Box>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </AppBar>
+  );
 }
 
 export default Header;
