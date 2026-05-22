@@ -20,6 +20,7 @@ const Experience = () => {
           >
             <Typography
               variant="h2"
+              component="h1"
               sx={{
                 mb: 2,
                 fontWeight: 800,
@@ -113,14 +114,14 @@ const Experience = () => {
                       </Link>
                     </Box>
                     
-                    <Typography variant="h6" color="primary" sx={{ mb: 2, fontWeight: 600 }}>
+                    <Typography variant="h6" sx={{ color: 'custom.accentText', mb: 2, fontWeight: 600 }}>
                       {exp.company}
                     </Typography>
 
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mb: 3 }}>
                       <Box sx={{ display: "flex", alignItems: "center", gap: 1, color: "text.secondary" }}>
                         <Calendar size={16} />
-                        <Typography variant="body2">{exp.duration}</Typography>
+                        <Typography variant="body2" component="time" dateTime={exp.startDate}>{exp.duration}</Typography>
                       </Box>
                       <Box sx={{ display: "flex", alignItems: "center", gap: 1, color: "text.secondary" }}>
                         <MapPin size={16} />
@@ -164,7 +165,7 @@ const Experience = () => {
                             sx={{ 
                               color: theme.palette.text.secondary, 
                               mb: 0.5,
-                              fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
+                              fontFamily: '"JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
                             }}
                           >
                             {">"} {contrib}

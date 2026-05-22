@@ -20,6 +20,7 @@ function Projects() {
           >
             <Typography
               variant="h2"
+              component="h1"
               sx={{
                 mb: 2,
                 fontWeight: 800,

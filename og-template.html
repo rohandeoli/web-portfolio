@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>OG card template — Rohan Deoli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --surface: #161616;
+    --border: #262626;
+    --primary: #DC2643;
+    --text: #EDEDED;
+    --muted: #A1A1AA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #1a1a1a; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  /* The card itself — EXACTLY 1200x630. Screenshot this element. */
+  .card {
+    width: 1200px;
+    height: 630px;
+    background: var(--bg);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: stretch;
+    border: 1px solid var(--border);
+  }
+
+  /* Dotted grid background */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* Red glow accent — bottom-left */
+  .card::after {
+    content: '';
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    left: -180px;
+    bottom: -240px;
+    background: radial-gradient(circle, rgba(220, 38, 67, 0.35) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .left {
+    position: relative;
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+  }
+
+  .headline h1 {
+    font-size: 88px;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.0;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #EDEDED 0%, #DC2643 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .headline .role {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .headline .sub {
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.4;
+    max-width: 540px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    background: rgba(38, 38, 38, 0.55);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 14px;
+  }
+  .chip.accent {
+    color: var(--primary);
+    border-color: rgba(220, 38, 67, 0.4);
+    background: rgba(220, 38, 67, 0.08);
+  }
+
+  .right {
+    position: relative;
+    z-index: 1;
+    padding: 64px 56px 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Code panel decoration */
+  .code {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 30px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 16px;
+    line-height: 1.65;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(220, 38, 67, 0.08);
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot.r { background: #FF5F57; }
+  .dot.y { background: #FEBC2E; }
+  .dot.g { background: #28C840; }
+  .code-file {
+    margin-left: 10px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .code .ln { color: #525252; user-select: none; display: inline-block; width: 22px; }
+  .k { color: #DC2643; }
+  .s { color: #A8C76F; }
+  .p { color: #82AAFF; }
+  .c { color: #525252; font-style: italic; }
+  .v { color: #EDEDED; }
+  .m { color: #C792EA; }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .footer .url { color: var(--text); }
+  .footer .loc { font-size: 13px; }
+
+  /* Capture helper bar — not part of the card, screenshot the .card only */
+  .help {
+    width: 1200px;
+    color: #888;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 14px 4px 0;
+    line-height: 1.6;
+  }
+  .help b { color: #ddd; }
+  .help code {
+    background: #222;
+    color: #ddd;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div style="display:flex;flex-direction:column;align-items:center;">
+
+  <div class="card" id="og-card">
+    <div class="left">
+      <div class="logo">rohan.d()</div>
+
+      <div class="headline">
+        <h1>Rohan Deoli</h1>
+        <div class="role">Senior Full Stack Engineer</div>
+        <div class="sub">Architecting scalable web ecosystems &amp; Micro-Frontend systems. 5+ years building for global enterprise.</div>
+      </div>
+
+      <div class="chips">
+        <div class="chip accent">Angular</div>
+        <div class="chip">React</div>
+        <div class="chip">TypeScript</div>
+        <div class="chip">Node.js</div>
+        <div class="chip">NestJS</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="code">
+        <div class="code-header">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="code-file">portfolio.ts</span>
+        </div>
+        <div><span class="ln">1</span><span class="k">const</span> <span class="v">engineer</span> <span class="k">=</span> {</div>
+        <div><span class="ln">2</span>&nbsp;&nbsp;<span class="p">role</span>: <span class="s">'Specialist Programmer'</span>,</div>
+        <div><span class="ln">3</span>&nbsp;&nbsp;<span class="p">stack</span>: [<span class="s">'Angular'</span>, <span class="s">'React'</span>, <span class="s">'Node'</span>],</div>
+        <div><span class="ln">4</span>&nbsp;&nbsp;<span class="p">focus</span>: <span class="s">'Micro-Frontends'</span>,</div>
+        <div><span class="ln">5</span>&nbsp;&nbsp;<span class="p">based</span>: <span class="s">'Bengaluru, IN'</span>,</div>
+        <div><span class="ln">6</span>&nbsp;&nbsp;<span class="p">building</span>: <span class="k">true</span>,</div>
+        <div><span class="ln">7</span>};</div>
+        <div style="margin-top:10px;"><span class="ln">8</span><span class="c">// open to senior opportunities</span></div>
+      </div>
+    </div>
+
+    <div class="footer" style="position:absolute; left:56px; right:56px; bottom:30px;">
+      <span class="url">rohandeoli.netlify.app</span>
+      <span class="loc">Bengaluru, IN 🇮🇳</span>
+    </div>
+  </div>
+
+  <div class="help">
+    <p><b>How to capture this as a 1200×630 PNG:</b></p>
+    <p><b>Fastest (Chrome DevTools, recommended):</b></p>
+    <p>1. Open this file in Chrome. 2. <code>Cmd+Opt+I</code> to open DevTools. 3. <code>Cmd+Shift+P</code> → type "screenshot" → choose <b>"Capture node screenshot"</b>. 4. Click the <code>.card</code> element in the Elements panel first so it's selected, then run the command. Saves a pixel-perfect 1200×630 PNG.</p>
+    <p><b>Alternative (headless Chrome):</b></p>
+    <p><code>chrome --headless --screenshot=og.png --window-size=1200,630 file://$(pwd)/og-template.html</code> — but this captures the page including the help bar, so use the DevTools method instead.</p>
+    <p><b>After capturing:</b> save the PNG as <code>public/og.png</code>, then wire it into <code>index.html</code> + <code>src/components/PageMeta/PageMeta.tsx</code> per <code>IMPROVEMENTS.md</code> item P0.1.</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -18,6 +18,7 @@ const BentoSkills = () => {
     <Container maxWidth="lg" sx={{ py: 10 }}>
       <Typography
         variant="h3"
+        component="h2"
         sx={{ mb: 6, textAlign: "center", fontWeight: 700 }}
       >
         Technical Arsenal
@@ -65,7 +66,7 @@ const BentoSkills = () => {
                   >
                     {iconMap[skillGroup.title] || <Code2 size={24} />}
                   </Box>
-                  <Typography variant="h5" fontWeight={600}>
+                  <Typography variant="h5" component="h3" fontWeight={600}>
                     {skillGroup.title}
                   </Typography>
                 </Box>
@@ -146,7 +147,7 @@ const BentoSkills = () => {
             }}
           >
             <Globe size={40} color={theme.palette.primary.main} style={{ marginBottom: "16px" }} />
-            <Typography variant="h6" fontWeight={600}>Based in</Typography>
+            <Typography variant="h6" component="h3" fontWeight={600}>Based in</Typography>
             <Typography color="text.secondary">{location}</Typography>
           </Paper>
         </Box>
@@ -177,7 +178,7 @@ const BentoSkills = () => {
             >
               <Cpu size={120} />
             </Box>
-            <Typography variant="h6" fontWeight={600} mb={1}>Current Focus</Typography>
+            <Typography variant="h6" component="h3" fontWeight={600} mb={1}>Current Focus</Typography>
             <Typography color="text.secondary">{currentFocus}</Typography>
           </Paper>
         </Box>

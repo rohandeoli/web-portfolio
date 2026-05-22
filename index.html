@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#DC2643" />
 
@@ -47,12 +49,27 @@
   <meta property="twitter:image" content="https://rohandeoli.netlify.app/og-image.png" />
   <meta property="twitter:image:alt" content="Rohan Deoli — Senior Full Stack Engineer" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts are self-hosted via @fontsource-variable (imported in src/main.tsx). -->
 </head>
 
 <body>
+  <!-- Resolve theme before first paint to avoid a flash. Falls back to OS preference
+       for first-time visitors. Keep colors in sync with background.default in src/theme.tsx. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('themeMode');
+        var mode = (saved === 'light' || saved === 'dark')
+          ? saved
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = mode;
+        document.documentElement.style.backgroundColor = mode === 'light' ? '#FAFAFA' : '#0A0A0A';
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.style.backgroundColor = '#0A0A0A';
+      }
+    })();
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

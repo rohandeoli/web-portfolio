@@ -51,7 +51,14 @@ const Layout = ({ children, setTheme }: LayoutProps) => {
         component="main"
         id="main-content"
         tabIndex={-1}
-        sx={{ flexGrow: 1, paddingTop: "80px", "&:focus": { outline: "none" } }}
+        sx={{
+          flexGrow: 1,
+          paddingTop: "80px",
+          "&:focus": {
+            outline: `2px solid ${theme.palette.primary.main}`,
+            outlineOffset: "-4px",
+          },
+        }}
       >
         {children}
       </Box>

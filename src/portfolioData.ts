@@ -110,6 +110,8 @@ export const portfolioData: PortfolioData = {
       title: "Graphic Era Deemed University",
       subtitle: "Bachelors in Technology",
       duration: "2016 - 2020",
+      startDate: "2016",
+      endDate: "2020",
       descriptions: [
         "⚡ Majored in Computer Science and Engineering with a focus on core software principles.",
         "⚡ Deep-dived into Data Structures, Algorithms, Operating Systems, and Web Engineering.",
@@ -138,6 +140,7 @@ export const portfolioData: PortfolioData = {
             company: "Infosys Ltd.",
             company_url: "https://www.infosys.com/",
             duration: "Apr 2024 - Present",
+            startDate: "2024-04",
             location: "Bengaluru, Karnataka",
             description: [
               "Spearheading the strategic architectural migration of PwC’s mission-critical 'Flex' application from a legacy AngularJS/.NET monolith to a cutting-edge Angular Micro-Frontend ecosystem.",
@@ -156,6 +159,8 @@ export const portfolioData: PortfolioData = {
             company: "Infosys Ltd.",
             company_url: "https://www.infosys.com/",
             duration: "Jan 2022 - Apr 2024",
+            startDate: "2022-01",
+            endDate: "2024-04",
             location: "Bengaluru, Karnataka",
             description: [
               "Architected and maintained JRA, a high-traffic internal Job Requisition Portal integrated with PwC’s global talent systems.",
@@ -173,6 +178,8 @@ export const portfolioData: PortfolioData = {
             company: "Infosys Ltd.",
             company_url: "https://www.infosys.com/",
             duration: "Jan 2021 - Jan 2022",
+            startDate: "2021-01",
+            endDate: "2022-01",
             location: "Bengaluru, Karnataka",
             description: [
               "Played a pivotal role as a UI Developer for the Indian Income Tax project, a high-visibility national-scale digital transformation.",
@@ -256,4 +263,48 @@ export const portfolioData: PortfolioData = {
     title: "Get In Touch",
     description: "I am always open to discussing high-impact projects, architectural challenges, or senior-level opportunities. Whether you have a question or just want to connect, my inbox is always open.",
   },
+  // Curated from the Medium RSS feed (https://medium.com/@rohan.deoli98/feed),
+  // newest first. The /writing route and nav item appear only while this is non-empty.
+  writing: [
+    {
+      title: "Web Components with Angular Elements in Nx Microfrontends: Breaking Free From Framework Constraints",
+      url: "https://medium.com/@rohan.deoli98/web-components-with-angular-elements-in-nx-microfrontends-breaking-free-from-framework-constraints-67aea3c36e50",
+      source: "Medium",
+      date: "Oct 2025",
+      publishedAt: "2025-10",
+      description: "Packaging Angular components as framework-agnostic Web Components in an Nx monorepo, so React, Vue, and vanilla-JS teams can share the same UI.",
+    },
+    {
+      title: "Learn Express.js: Creating Custom Middleware for Robust Logging and Error Handling",
+      url: "https://medium.com/@rohan.deoli98/learn-express-js-creating-custom-middleware-for-robust-logging-and-error-handling-7f80fd1d63f8",
+      source: "Medium",
+      date: "Apr 2025",
+      publishedAt: "2025-04",
+      description: "Writing your own Express middleware for structured request logging and centralized error handling, with production-ready patterns.",
+    },
+    {
+      title: "Shadowing in JavaScript: A Beginner’s Guide to JavaScript Fundamentals",
+      url: "https://medium.com/@rohan.deoli98/shadowing-in-javascript-a-beginners-guide-to-javascript-fundamentals-d4d347cc4ff1",
+      source: "Medium",
+      date: "Oct 2024",
+      publishedAt: "2024-10",
+      description: "A beginner-friendly look at how variables in nested scopes shadow parent-scope variables across functions, blocks, and loops.",
+    },
+    {
+      title: "Optimizing Angular Performance: Avoiding Overuse of Change Detection",
+      url: "https://medium.com/@rohan.deoli98/optimizing-angular-performance-avoiding-overuse-of-change-detection-8b4edc022a4f",
+      source: "Medium",
+      date: "Oct 2024",
+      publishedAt: "2024-10",
+      description: "Cutting unnecessary change-detection cycles in Angular with OnPush, immutable data, and trackBy.",
+    },
+    {
+      title: "The JavaScript Call Stack",
+      url: "https://medium.com/@rohan.deoli98/the-javascript-call-stack-4f8dcf511cdd",
+      source: "Medium",
+      date: "May 2024",
+      publishedAt: "2024-05",
+      description: "How JavaScript's LIFO call stack tracks function execution — and why understanding it sharpens your debugging.",
+    },
+  ],
 };

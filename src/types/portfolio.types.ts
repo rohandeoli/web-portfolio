@@ -32,6 +32,9 @@ export interface Degree {
   title: string;
   subtitle: string;
   duration: string;
+  /** Machine-readable ISO dates for the `<time>` element, e.g. "2016" or "2020-05". */
+  startDate?: string;
+  endDate?: string;
   descriptions: string[];
   website_link: string;
 }
@@ -47,6 +50,9 @@ export interface WorkExperience {
   company: string;
   company_url: string;
   duration: string;
+  /** Machine-readable ISO dates for the `<time>` element, e.g. "2024-04". Omit endDate for ongoing roles. */
+  startDate?: string;
+  endDate?: string;
   location: string;
   description: string[];
   contributions: string[];
@@ -89,6 +95,18 @@ export interface ProjectsHeader {
   description: string;
 }
 
+export interface WritingItem {
+  title: string;
+  url: string;
+  /** Where it was published, e.g. "Medium", "Dev.to", "Personal blog". */
+  source: string;
+  /** Human-readable date shown in the UI, e.g. "May 2026". */
+  date: string;
+  /** Optional ISO date for the semantic `<time>` element, e.g. "2026-05". */
+  publishedAt?: string;
+  description: string;
+}
+
 export interface ContactData {
   title: string;
   description: string;
@@ -107,5 +125,6 @@ export interface PortfolioData {
   experience: Experience;
   projectsHeader: ProjectsHeader;
   projects: Project[];
+  writing: WritingItem[];
   contactData: ContactData;
 }

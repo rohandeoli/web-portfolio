@@ -14,9 +14,10 @@ declare module '@mui/material/styles' {
       avatarShoes: string;
       surface: string;
       border: string;
+      accentText: string;
     };
   }
-  
+
   interface PaletteOptions {
     custom?: {
       dark?: string;
@@ -30,9 +31,34 @@ declare module '@mui/material/styles' {
       headerHover?: string;
       surface?: string;
       border?: string;
+      accentText?: string;
     };
   }
 }
+
+// Component overrides shared by both themes. The Paper border uses a theme-aware
+// callback so light and dark each pick up their own palette.custom.border value.
+const sharedComponents: ThemeOptions['components'] = {
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        borderRadius: 8,
+        transition: 'all 0.2s ease-in-out',
+        '&:hover': {
+          transform: 'translateY(-1px)',
+        },
+      },
+    },
+  },
+  MuiPaper: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        backgroundImage: 'none',
+        border: `1px solid ${theme.palette.custom.border}`,
+      }),
+    },
+  },
+};
 
 const lightThemeOptions: ThemeOptions = {
   palette: {
@@ -64,10 +90,12 @@ const lightThemeOptions: ThemeOptions = {
       headerHover: '#F5F5F5',
       surface: '#FFFFFF',
       border: '#E5E5E5',
+      // Accent used for small TEXT on light bg (passes WCAG AA 4.5:1). Fills keep primary.main.
+      accentText: '#DC2643',
     },
   },
   typography: {
-    fontFamily: '"Inter", "system-ui", "-apple-system", sans-serif',
+    fontFamily: '"Inter Variable", "Inter Fallback", system-ui, -apple-system, sans-serif',
     h1: { fontWeight: 800, letterSpacing: '-0.025em' },
     h2: { fontWeight: 700, letterSpacing: '-0.025em' },
     h3: { fontWeight: 700, letterSpacing: '-0.025em' },
@@ -76,6 +104,7 @@ const lightThemeOptions: ThemeOptions = {
   shape: {
     borderRadius: 12,
   },
+  components: sharedComponents,
 };
 
 const darkThemeOptions: ThemeOptions = {
@@ -108,10 +137,13 @@ const darkThemeOptions: ThemeOptions = {
       headerHover: '#262626',
       surface: '#161616',
       border: '#262626',
+      // Lighter accent for small TEXT on dark bg — #DC2643 only hits 3.79:1 on the
+      // surface, this hits AA (5.26 on bg, 4.81 on surface). Fills keep primary.main.
+      accentText: '#E84A60',
     },
   },
   typography: {
-    fontFamily: '"Inter", "system-ui", "-apple-system", sans-serif',
+    fontFamily: '"Inter Variable", "Inter Fallback", system-ui, -apple-system, sans-serif',
     h1: { fontWeight: 800, letterSpacing: '-0.025em' },
     h2: { fontWeight: 700, letterSpacing: '-0.025em' },
     h3: { fontWeight: 700, letterSpacing: '-0.025em' },
@@ -120,27 +152,7 @@ const darkThemeOptions: ThemeOptions = {
   shape: {
     borderRadius: 12,
   },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 8,
-          transition: 'all 0.2s ease-in-out',
-          '&:hover': {
-            transform: 'translateY(-1px)',
-          },
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: 'none',
-          border: '1px solid #262626',
-        },
-      },
-    },
-  },
+  components: sharedComponents,
 };
 
 const lightTheme = createTheme(lightThemeOptions);

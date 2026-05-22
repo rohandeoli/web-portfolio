@@ -26,6 +26,7 @@ const Education = () => {
             >
               <Typography
                 variant="h2"
+                component="h1"
                 sx={{
                   mb: 2,
                   fontWeight: 800,
@@ -66,21 +67,21 @@ const Education = () => {
                       <Typography variant="h5" fontWeight={700} sx={{ mb: 1 }}>
                         {degree.title}
                       </Typography>
-                      <Typography variant="h6" color="primary" fontWeight={600}>
+                      <Typography variant="h6" fontWeight={600} sx={{ color: 'custom.accentText' }}>
                         {degree.subtitle}
                       </Typography>
                     </Box>
                     <Box sx={{ textAlign: "right" }}>
                       <Typography variant="body2" color="text.secondary" sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                         <Calendar size={16} />
-                        {degree.duration}
+                        <time dateTime={degree.startDate}>{degree.duration}</time>
                       </Typography>
                       {degree.website_link && (
                         <Link
                           href={degree.website_link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          sx={{ color: theme.palette.primary.main, display: "flex", alignItems: "center", justifyContent: "flex-end", mt: 1, gap: 0.5 }}
+                          sx={{ color: theme.palette.custom.accentText, display: "flex", alignItems: "center", justifyContent: "flex-end", mt: 1, gap: 0.5 }}
                         >
                           <Typography variant="caption" fontWeight={600}>Website</Typography>
                           <ExternalLink size={14} />
@@ -191,7 +192,7 @@ const Education = () => {
                         display: "flex",
                         alignItems: "center",
                         gap: 1,
-                        color: theme.palette.primary.main,
+                        color: theme.palette.custom.accentText,
                         textDecoration: "none",
                         fontWeight: 700,
                         "&:hover": { textDecoration: "underline" }

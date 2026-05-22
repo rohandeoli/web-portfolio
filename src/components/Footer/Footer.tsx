@@ -8,10 +8,10 @@ function Footer() {
   const { socialMediaLinks, greeting } = portfolioData;
 
   const socials = [
-    { icon: "ri:github-fill", url: socialMediaLinks.github },
-    { icon: "ri:linkedin-box-fill", url: socialMediaLinks.linkedin },
-    { icon: "ri:twitter-x-fill", url: socialMediaLinks.twitter },
-    { icon: "ri:mail-fill", url: greeting.mail },
+    { icon: "ri:github-fill", url: socialMediaLinks.github, label: "GitHub" },
+    { icon: "ri:linkedin-box-fill", url: socialMediaLinks.linkedin, label: "LinkedIn" },
+    { icon: "ri:twitter-x-fill", url: socialMediaLinks.twitter, label: "Twitter" },
+    { icon: "ri:mail-fill", url: greeting.mail, label: "Email" },
   ];
 
   return (
@@ -40,7 +40,7 @@ function Footer() {
               sx={{
                 fontWeight: 800,
                 color: theme.palette.primary.main,
-                fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
+                fontFamily: '"JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
                 mb: 1,
               }}
             >
@@ -56,8 +56,9 @@ function Footer() {
               <Link
                 key={social.url}
                 href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                aria-label={social.label}
+                target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                 sx={{
                   color: "text.secondary",
                   transition: "all 0.2s",

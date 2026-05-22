@@ -9,8 +9,22 @@
   --color-text-secondary: #a1a1aa;
 }
 
+/*
+ * Metric-matched fallback for Inter. While the self-hosted "Inter Variable"
+ * loads, text renders in Arial scaled to Inter's metrics, so the swap causes no
+ * layout shift (CLS). Listed right after "Inter Variable" in the font stacks.
+ */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.49%;
+  descent-override: 22.56%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.06%;
+}
+
 :root {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

@@ -28,6 +28,7 @@ const Contact = () => {
           >
             <Typography
               variant="h2"
+              component="h1"
               sx={{
                 mb: 2,
                 fontWeight: 800,
@@ -80,8 +81,8 @@ const Contact = () => {
                     <Button
                       variant="outlined"
                       href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                      rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                       startIcon={<Icon icon={social.icon} width={20} height={20} />}
                       sx={{
                         px: 3,
@@ -132,7 +133,7 @@ const Contact = () => {
                     px: 6,
                     py: 2,
                     borderColor: theme.palette.primary.main,
-                    color: theme.palette.primary.main,
+                    color: theme.palette.custom.accentText,
                     fontWeight: 700,
                     "&:hover": {
                       backgroundColor: `${theme.palette.primary.main}10`,
