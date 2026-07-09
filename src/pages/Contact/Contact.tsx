@@ -1,4 +1,5 @@
-import { Box, Button, Container, Typography, useTheme, Paper } from "@mui/material";
+import { Box, Button, Container, Typography, useTheme, Paper, TextField, CircularProgress, Alert } from "@mui/material";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { portfolioData } from "../../portfolioData";
 import { FileText, Send } from "lucide-react";
@@ -8,6 +9,40 @@ import PageMeta from "../../components/PageMeta/PageMeta";
 const Contact = () => {
   const theme = useTheme();
   const { contactData, socialMediaLinks, greeting } = portfolioData;
+
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+    
+    try {
+      const res = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+      
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err: unknown) {
+      setStatus('error');
+      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again later.');
+    }
+  };
 
   const socials = [
     { icon: "ri:github-fill", name: "GitHub", url: socialMediaLinks.github, color: "#EDEDED" },
@@ -71,7 +106,7 @@ const Contact = () => {
                 Let's Build Something Together
               </Typography>
               
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center", mb: 6 }}>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center", mb: 4 }}>
                 {socials.map((social) => (
                   <motion.div
                     key={social.name}
@@ -102,7 +137,7 @@ const Contact = () => {
                 ))}
               </Box>
 
-              <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, gap: 3, justifyContent: "center" }}>
+              <Box sx={{ mb: 6, display: 'flex', justifyContent: 'center' }}>
                 <Button
                   variant="contained"
                   size="large"
@@ -123,25 +158,68 @@ const Contact = () => {
                 >
                   View My Resume
                 </Button>
+              </Box>
+
+              <Typography variant="h5" fontWeight={600} sx={{ mb: 3, textAlign: 'left' }}>
+                Send a Message
+              </Typography>
+
+              <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3, textAlign: 'left' }}>
+                <TextField 
+                  label="Name" 
+                  name="name" 
+                  value={formData.name} 
+                  onChange={handleChange} 
+                  required 
+                  fullWidth 
+                  variant="outlined" 
+                />
+                <TextField 
+                  label="Email" 
+                  name="email" 
+                  type="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  required 
+                  fullWidth 
+                  variant="outlined" 
+                />
+                <TextField 
+                  label="Message" 
+                  name="message" 
+                  value={formData.message} 
+                  onChange={handleChange} 
+                  required 
+                  fullWidth 
+                  multiline 
+                  rows={4} 
+                  variant="outlined" 
+                />
                 
+                {status === 'success' && (
+                  <Alert severity="success">Message sent successfully! I will get back to you soon.</Alert>
+                )}
+                {status === 'error' && (
+                  <Alert severity="error">{errorMessage}</Alert>
+                )}
+
                 <Button
-                  variant="outlined"
-                  size="large"
-                  href={greeting.mail}
-                  startIcon={<Send size={20} />}
+                  type="submit"
+                  variant="contained"
+                  disabled={status === 'loading'}
+                  endIcon={status === 'loading' ? <CircularProgress size={20} color="inherit" /> : <Send size={20} />}
                   sx={{
-                    px: 6,
-                    py: 2,
-                    borderColor: theme.palette.primary.main,
-                    color: theme.palette.custom.accentText,
+                    py: 1.5,
+                    px: 4,
+                    backgroundColor: theme.palette.primary.main,
                     fontWeight: 700,
+                    alignSelf: { xs: 'stretch', sm: 'flex-start' },
                     "&:hover": {
-                      backgroundColor: `${theme.palette.primary.main}10`,
-                      borderColor: theme.palette.primary.main,
+                      backgroundColor: theme.palette.primary.dark,
                     },
                   }}
                 >
-                  Send a Message
+                  {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </Button>
               </Box>
             </Paper>

@@ -1,4 +1,4 @@
-import { Moon, Sun, Menu as MenuIcon, X } from "lucide-react";
+import { Moon, Sun, Menu as MenuIcon, X, Search } from "lucide-react";
 import { AppBar, Box, Container, IconButton, Toolbar, Typography, useTheme, Button, useScrollTrigger } from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
@@ -146,6 +146,43 @@ function Header(props: { setTheme: () => void; }) {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            {/* Command Palette Hint Button */}
+            <Button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                alignItems: 'center',
+                gap: 1,
+                color: theme.palette.text.secondary,
+                border: `1px solid ${theme.palette.custom.border}`,
+                borderRadius: '8px',
+                px: 1.5,
+                py: 0.5,
+                textTransform: 'none',
+                fontSize: '0.85rem',
+                backgroundColor: trigger ? 'transparent' : theme.palette.background.default,
+                '&:hover': {
+                  borderColor: theme.palette.text.primary,
+                  backgroundColor: theme.palette.action.hover,
+                }
+              }}
+            >
+              <Search size={16} />
+              Search...
+              <Box component="span" sx={{
+                ml: 1, 
+                px: 0.5, 
+                py: 0.2, 
+                borderRadius: '4px', 
+                backgroundColor: theme.palette.action.selected, 
+                fontSize: '0.75rem', 
+                fontWeight: 600,
+                color: theme.palette.text.primary
+              }}>
+                ⌘K
+              </Box>
+            </Button>
+
             <IconButton
               onClick={props.setTheme}
               aria-label={`Switch to ${theme.palette.mode === 'dark' ? 'light' : 'dark'} mode`}

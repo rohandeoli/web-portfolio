@@ -1,0 +1,100 @@
+.terminal-window {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background-color: #121212;
+  border: 1px solid #333;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+  background-color: #2D2D2D;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #111;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.close { background-color: #FF5F56; }
+.terminal-button.minimize { background-color: #FFBD2E; }
+.terminal-button.maximize { background-color: #27C93F; }
+
+.terminal-title {
+  color: #999;
+  font-size: 13px;
+  margin-left: 20px;
+  flex-grow: 1;
+  text-align: center;
+  padding-right: 40px; /* Offset the buttons to keep text truly centered */
+}
+
+.terminal-body {
+  padding: 20px;
+  height: 350px;
+  overflow-y: auto;
+  color: #EDEDED;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 8px;
+}
+.terminal-body::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+.terminal-line {
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.terminal-prompt {
+  color: #27C93F;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.terminal-command {
+  color: #EDEDED;
+}
+
+.terminal-output {
+  color: #A1A1AA;
+  margin-top: 6px;
+  white-space: pre-wrap;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: #EDEDED;
+  font-family: inherit;
+  font-size: inherit;
+  flex-grow: 1;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}

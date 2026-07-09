@@ -2,6 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import { ReactNode } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import CommandPalette from "../CommandPalette/CommandPalette";
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ const Layout = ({ children, setTheme }: LayoutProps) => {
         color: theme.palette.text.primary,
       }}
     >
+      <CommandPalette setTheme={setTheme} />
       <Box
         component="a"
         href="#main-content"
